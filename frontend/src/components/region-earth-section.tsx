@@ -68,7 +68,7 @@ export function RegionEarthSection() {
 
         {/* Globe Canvas Container */}
         <div className="w-full aspect-square relative z-10 cursor-grab active:cursor-grabbing">
-          <GlobeCdn speed={0.0028} />
+          <GlobeCdn speed={0.0012} />
         </div>
       </div>
 

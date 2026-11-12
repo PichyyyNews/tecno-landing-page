@@ -50,7 +50,7 @@ export function GlobeCdn({
   markers = defaultMarkers,
   arcs = defaultArcs,
   className = "",
-  speed = 0.003,
+  speed = 0.0012,
 }: GlobeCdnProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const pointerInteracting = useRef<{ x: number; y: number } | null>(null);
