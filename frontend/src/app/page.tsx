@@ -2,7 +2,6 @@ import React from "react";
 import Image from "next/image";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { HeroASCIIBanner } from "@/components/hero-ascii-banner";
-import { BlueprintGridPattern } from "@/components/blueprint-grid-pattern";
 import {
   SlMagnifier,
   SlArrowDown,
@@ -18,10 +17,7 @@ export const revalidate = 60;
 
 export default async function HomePage() {
   return (
-    <div className="min-h-screen bg-background text-foreground transition-colors duration-200 flex flex-col relative">
-      {/* Cloudflare Architectural Blueprint Grid Pattern */}
-      <BlueprintGridPattern />
-
+    <div className="min-h-screen bg-background text-foreground transition-colors duration-200 flex flex-col relative overflow-x-hidden">
       {/* Top Navbar: Cloudflare inspired */}
       <header className="border-b border-border/60 bg-background/95 backdrop-blur-md sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between gap-4">
@@ -115,61 +111,72 @@ export default async function HomePage() {
         </div>
       </header>
 
-      {/* Main Content Area */}
-      <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 w-full pt-8 pb-16 space-y-16 relative z-10">
-        {/* Central Hero Box with React Bits GradientASCII */}
-        <section className="w-full">
-          <HeroASCIIBanner
-            title="Everything we learned from engineering high-performance compute — yours by default"
-            subtitle="One platform for your workstations, neural models, and enterprise workloads. Build, compute, and scale without managing infrastructure bottlenecks."
-            ctaText="Start building for free"
-            ctaHref="#explore"
-          />
-        </section>
+      {/* 1. Horizontal dashed line between navbar and hero */}
+      <div className="w-full border-b border-dashed border-foreground/15 dark:border-white/10" />
 
-        {/* Subheader Section below Hero (Cloudflare Style) */}
-        <section className="text-center max-w-2xl mx-auto space-y-3 py-6">
-          <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-foreground">
-            Region: Earth
-          </h2>
-          <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-            One smart platform for high-throughput compute, security, and neural workloads — close to users, close to silicon.
-          </p>
-        </section>
+      {/* Container wrapper with Left & Right vertical dashed guidelines */}
+      <div className="flex-1 w-full relative">
+        <div className="max-w-7xl mx-auto pointer-events-none absolute inset-0 border-x border-dashed border-foreground/15 dark:border-white/10" />
 
-        {/* Core Pillars / Value Propositions (Minimal Clean UI) */}
-        <section id="solutions" className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
-          <div className="rounded-2xl border border-border bg-card p-6 space-y-3">
-            <div className="w-8 h-8 rounded-xl bg-secondary flex items-center justify-center text-secondary-foreground">
-              <SlScreenDesktop className="size-4 text-primary" />
-            </div>
-            <h3 className="text-sm font-semibold text-foreground">High-Throughput Workstations</h3>
-            <p className="text-xs text-muted-foreground leading-relaxed">
-              Custom-built desktop and rackmount rigs optimized for LLM fine-tuning, complex 3D rendering, and multi-core compilation.
+        {/* Main Content Area */}
+        <main className="max-w-7xl mx-auto px-4 sm:px-6 w-full pt-8 pb-16 space-y-12 relative z-10">
+          {/* Central Hero Box with React Bits GradientASCII */}
+          <section className="w-full">
+            <HeroASCIIBanner
+              title="Everything we learned from engineering high-performance compute — yours by default"
+              subtitle="One platform for your workstations, neural models, and enterprise workloads. Build, compute, and scale without managing infrastructure bottlenecks."
+              ctaText="Start building for free"
+              ctaHref="#explore"
+            />
+          </section>
+
+          {/* 2. Horizontal dashed line below hero */}
+          <div className="w-screen relative left-1/2 -translate-x-1/2 border-b border-dashed border-foreground/15 dark:border-white/10" />
+
+          {/* Subheader Section below Hero (Cloudflare Style) */}
+          <section className="text-center max-w-2xl mx-auto space-y-3 py-6">
+            <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-foreground">
+              Region: Earth
+            </h2>
+            <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+              One smart platform for high-throughput compute, security, and neural workloads — close to users, close to silicon.
             </p>
-          </div>
+          </section>
 
-          <div className="rounded-2xl border border-border bg-card p-6 space-y-3">
-            <div className="w-8 h-8 rounded-xl bg-secondary flex items-center justify-center text-secondary-foreground">
-              <SlLayers className="size-4 text-primary" />
+          {/* Core Pillars / Value Propositions (Minimal Clean UI) */}
+          <section id="solutions" className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
+            <div className="rounded-2xl border border-border bg-card p-6 space-y-3">
+              <div className="w-8 h-8 rounded-xl bg-secondary flex items-center justify-center text-secondary-foreground">
+                <SlScreenDesktop className="size-4 text-primary" />
+              </div>
+              <h3 className="text-sm font-semibold text-foreground">High-Throughput Workstations</h3>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Custom-built desktop and rackmount rigs optimized for LLM fine-tuning, complex 3D rendering, and multi-core compilation.
+              </p>
             </div>
-            <h3 className="text-sm font-semibold text-foreground">Next-Gen Software Stack</h3>
-            <p className="text-xs text-muted-foreground leading-relaxed">
-              Native SSG/ISR caching with Next.js 16, concurrent Go API microservices, and automated Caddy edge proxy routing.
-            </p>
-          </div>
 
-          <div className="rounded-2xl border border-border bg-card p-6 space-y-3">
-            <div className="w-8 h-8 rounded-xl bg-secondary flex items-center justify-center text-secondary-foreground">
-              <SlChart className="size-4 text-primary" />
+            <div className="rounded-2xl border border-border bg-card p-6 space-y-3">
+              <div className="w-8 h-8 rounded-xl bg-secondary flex items-center justify-center text-secondary-foreground">
+                <SlLayers className="size-4 text-primary" />
+              </div>
+              <h3 className="text-sm font-semibold text-foreground">Next-Gen Software Stack</h3>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Native SSG/ISR caching with Next.js 16, concurrent Go API microservices, and automated Caddy edge proxy routing.
+              </p>
             </div>
-            <h3 className="text-sm font-semibold text-foreground">Sub-Millisecond Edge Gateway</h3>
-            <p className="text-xs text-muted-foreground leading-relaxed">
-              Enterprise security, automatic SSL/TLS termination, and database health observability directly out of the box.
-            </p>
-          </div>
-        </section>
-      </main>
+
+            <div className="rounded-2xl border border-border bg-card p-6 space-y-3">
+              <div className="w-8 h-8 rounded-xl bg-secondary flex items-center justify-center text-secondary-foreground">
+                <SlChart className="size-4 text-primary" />
+              </div>
+              <h3 className="text-sm font-semibold text-foreground">Sub-Millisecond Edge Gateway</h3>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Enterprise security, automatic SSL/TLS termination, and database health observability directly out of the box.
+              </p>
+            </div>
+          </section>
+        </main>
+      </div>
 
       {/* Clean Minimal Footer */}
       <footer className="border-t border-border py-8 text-center text-xs text-muted-foreground relative z-10 bg-background/80 backdrop-blur-sm">
