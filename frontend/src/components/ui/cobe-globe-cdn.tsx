@@ -2,11 +2,13 @@
 
 import { useEffect, useRef, useCallback, useState } from "react";
 import createGlobe from "cobe";
+import { SlUser, SlLayers } from "react-icons/sl";
 
 interface CdnMarker {
   id: string;
   location: [number, number];
   region: string;
+  type?: "user" | "data";
 }
 
 interface CdnArc {
@@ -23,16 +25,16 @@ interface GlobeCdnProps {
 }
 
 const defaultMarkers: CdnMarker[] = [
-  { id: "cdn-iad", location: [38.95, -77.45], region: "iad1" },
-  { id: "cdn-sfo", location: [37.62, -122.38], region: "sfo1" },
-  { id: "cdn-cdg", location: [49.01, 2.55], region: "cdg1" },
-  { id: "cdn-hnd", location: [35.55, 139.78], region: "hnd1" },
-  { id: "cdn-syd", location: [-33.95, 151.18], region: "syd1" },
-  { id: "cdn-gru", location: [-23.43, -46.47], region: "gru1" },
-  { id: "cdn-sin", location: [1.36, 103.99], region: "sin1" },
-  { id: "cdn-arn", location: [59.65, 17.93], region: "arn1" },
-  { id: "cdn-dub", location: [53.43, -6.25], region: "dub1" },
-  { id: "cdn-bom", location: [19.09, 72.87], region: "bom1" },
+  { id: "cdn-iad", location: [38.95, -77.45], region: "Data Origin", type: "data" },
+  { id: "cdn-sfo", location: [37.62, -122.38], region: "Edge Compute", type: "user" },
+  { id: "cdn-cdg", location: [49.01, 2.55], region: "Edge Compute", type: "user" },
+  { id: "cdn-hnd", location: [35.55, 139.78], region: "Data Origin", type: "data" },
+  { id: "cdn-syd", location: [-33.95, 151.18], region: "Edge Compute", type: "user" },
+  { id: "cdn-gru", location: [-23.43, -46.47], region: "Edge Compute", type: "user" },
+  { id: "cdn-sin", location: [1.36, 103.99], region: "Edge Compute", type: "user" },
+  { id: "cdn-arn", location: [59.65, 17.93], region: "Data Origin", type: "data" },
+  { id: "cdn-dub", location: [53.43, -6.25], region: "Edge Compute", type: "user" },
+  { id: "cdn-bom", location: [19.09, 72.87], region: "Edge Compute", type: "user" },
 ];
 
 const defaultArcs: CdnArc[] = [
@@ -182,36 +184,8 @@ export function GlobeCdn({
     };
   }, [markers, arcs, speed]);
 
-  const pyramidFaceStyle = (nth: number): React.CSSProperties => {
-    const transforms = [
-      "rotateY(0deg) translateZ(4px) rotateX(19.5deg)",
-      "rotateY(120deg) translateZ(4px) rotateX(19.5deg)",
-      "rotateY(240deg) translateZ(4px) rotateX(19.5deg)",
-      "rotateX(-90deg) rotateZ(60deg) translateY(4px)",
-    ];
-    const colors = ["#fd5714", "#ffe8a6", "#d8c58d", "#ff8042"];
-    return {
-      position: "absolute",
-      left: -0.5,
-      top: 0,
-      width: 0,
-      height: 0,
-      borderLeft: "6.5px solid transparent",
-      borderRight: "6.5px solid transparent",
-      borderBottom: `13px solid ${colors[nth]}`,
-      transformOrigin: "center bottom",
-      transform: transforms[nth],
-    };
-  };
-
   return (
     <div className={`relative aspect-square select-none ${className}`}>
-      <style>{`
-        @keyframes pyramid-spin {
-          0% { transform: rotateX(20deg) rotateY(0deg); }
-          100% { transform: rotateX(20deg) rotateY(360deg); }
-        }
-      `}</style>
       <canvas
         ref={canvasRef}
         onPointerDown={handlePointerDown}
@@ -237,37 +211,33 @@ export function GlobeCdn({
             display: "flex",
             flexDirection: "column" as const,
             alignItems: "center",
-            gap: 6,
+            gap: 4,
             pointerEvents: "none" as const,
             opacity: `var(--cobe-visible-${m.id}, 0)`,
             filter: `blur(calc((1 - var(--cobe-visible-${m.id}, 0)) * 8px))`,
             transition: "opacity 0.3s, filter 0.3s",
           } as React.CSSProperties}
         >
-          <div
-            style={{
-              width: 12,
-              height: 12,
-              position: "relative",
-              transformStyle: "preserve-3d" as const,
-              animation: "pyramid-spin 4s linear infinite",
-            }}
-          >
-            {[0, 1, 2, 3].map((n) => (
-              <div key={n} style={pyramidFaceStyle(n)} />
-            ))}
+          {/* Cloudflare Style Circular Orange Badge */}
+          <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-primary text-white flex items-center justify-center shadow-lg shadow-orange-500/40 ring-2 ring-primary/40">
+            {m.type === "data" ? (
+              <SlLayers className="size-3 text-white" />
+            ) : (
+              <SlUser className="size-3 text-white" />
+            )}
           </div>
           <span
             style={{
               fontFamily: "monospace",
-              fontSize: "0.55rem",
+              fontSize: "0.5rem",
               color: "#fff",
-              background: "#fd5714",
-              padding: "2px 6px",
-              borderRadius: 3,
+              background: "rgba(0,0,0,0.75)",
+              border: "1px solid rgba(253, 87, 20, 0.4)",
+              backdropFilter: "blur(4px)",
+              padding: "1px 5px",
+              borderRadius: 4,
               letterSpacing: "0.05em",
               whiteSpace: "nowrap" as const,
-              boxShadow: "0 1px 3px rgba(0,0,0,0.4)",
             }}
           >
             {m.region}
@@ -286,9 +256,10 @@ export function GlobeCdn({
             fontFamily: "monospace",
             fontSize: "0.5rem",
             color: "#fff",
-            background: "#18181b",
+            background: "rgba(24, 24, 27, 0.85)",
+            backdropFilter: "blur(4px)",
             border: "1px solid rgba(253, 87, 20, 0.4)",
-            padding: "3px 8px",
+            padding: "2px 6px",
             borderRadius: 4,
             whiteSpace: "nowrap" as const,
             pointerEvents: "none" as const,
