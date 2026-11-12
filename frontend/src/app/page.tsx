@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { HeroASCIIBanner } from "@/components/hero-ascii-banner";
+import { BlueprintGridPattern } from "@/components/blueprint-grid-pattern";
 import {
   SlMagnifier,
   SlArrowDown,
@@ -17,19 +18,22 @@ export const revalidate = 60;
 
 export default async function HomePage() {
   return (
-    <div className="min-h-screen bg-background text-foreground transition-colors duration-200 flex flex-col">
+    <div className="min-h-screen bg-background text-foreground transition-colors duration-200 flex flex-col relative">
+      {/* Cloudflare Architectural Blueprint Grid Pattern */}
+      <BlueprintGridPattern />
+
       {/* Top Navbar: Cloudflare inspired */}
       <header className="border-b border-border/60 bg-background/95 backdrop-blur-md sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between gap-4">
           {/* Brand Logo & Name */}
           <div className="flex items-center space-x-3 shrink-0">
             <a href="/" className="flex items-center space-x-3 group">
-              <div className="h-10 w-10 sm:h-11 sm:w-11 relative flex items-center justify-center shrink-0">
+              <div className="h-[46px] w-[46px] relative flex items-center justify-center shrink-0">
                 <Image
-                  src="/logo.svg"
+                  src="/logo.png"
                   alt="Technology Computer Logo"
-                  width={42}
-                  height={42}
+                  width={46}
+                  height={46}
                   className="object-contain"
                   priority
                 />
@@ -112,7 +116,7 @@ export default async function HomePage() {
       </header>
 
       {/* Main Content Area */}
-      <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 w-full pt-8 pb-16 space-y-16">
+      <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 w-full pt-8 pb-16 space-y-16 relative z-10">
         {/* Central Hero Box with React Bits GradientASCII */}
         <section className="w-full">
           <HeroASCIIBanner
@@ -168,15 +172,15 @@ export default async function HomePage() {
       </main>
 
       {/* Clean Minimal Footer */}
-      <footer className="border-t border-border py-8 text-center text-xs text-muted-foreground">
+      <footer className="border-t border-border py-8 text-center text-xs text-muted-foreground relative z-10 bg-background/80 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center space-x-2.5">
             <Image
-              src="/logo.svg"
+              src="/logo.png"
               alt="Technology Computer"
-              width={24}
-              height={24}
-              className="object-contain opacity-80"
+              width={26}
+              height={26}
+              className="object-contain opacity-85"
             />
             <span>© 2026 Technology Computer Systems. All rights reserved.</span>
           </div>

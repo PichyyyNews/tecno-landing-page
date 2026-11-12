@@ -32,10 +32,11 @@ export const metadata: Metadata = {
   metadataBase: new URL("http://localhost"),
   icons: {
     icon: [
+      { url: "/logo.png", type: "image/png" },
       { url: "/logo.svg", type: "image/svg+xml" },
       { url: "/icon.svg", type: "image/svg+xml" },
     ],
-    apple: [{ url: "/logo.svg" }],
+    apple: [{ url: "/logo.png" }],
   },
   openGraph: {
     type: "website",
@@ -47,7 +48,7 @@ export const metadata: Metadata = {
       "High-performance workstations, neural compute rigs, and enterprise computing infrastructure engineered for maximum throughput.",
     images: [
       {
-        url: "/logo.svg",
+        url: "/logo.png",
         width: 1920,
         height: 1920,
         alt: "Technology Computer Logo",
