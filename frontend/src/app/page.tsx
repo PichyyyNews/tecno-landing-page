@@ -24,12 +24,12 @@ export default async function HomePage() {
           {/* Brand Logo & Name */}
           <div className="flex items-center space-x-3 shrink-0">
             <a href="/" className="flex items-center space-x-3 group">
-              <div className="h-7 w-7 relative flex items-center justify-center">
+              <div className="h-10 w-10 sm:h-11 sm:w-11 relative flex items-center justify-center shrink-0">
                 <Image
                   src="/logo.svg"
                   alt="Technology Computer Logo"
-                  width={28}
-                  height={28}
+                  width={42}
+                  height={42}
                   className="object-contain"
                   priority
                 />
@@ -170,13 +170,13 @@ export default async function HomePage() {
       {/* Clean Minimal Footer */}
       <footer className="border-t border-border py-8 text-center text-xs text-muted-foreground">
         <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-2.5">
             <Image
               src="/logo.svg"
               alt="Technology Computer"
-              width={16}
-              height={16}
-              className="object-contain opacity-75"
+              width={24}
+              height={24}
+              className="object-contain opacity-80"
             />
             <span>© 2026 Technology Computer Systems. All rights reserved.</span>
           </div>

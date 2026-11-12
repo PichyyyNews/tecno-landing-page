@@ -25,7 +25,7 @@ export function HeroASCIIBanner({
   ctaHref = "#explore",
 }: HeroASCIIBannerProps) {
   return (
-    <div className="relative w-full rounded-3xl overflow-hidden border border-border/50 shadow-2xl bg-black">
+    <div className="relative w-full rounded-3xl overflow-hidden shadow-2xl bg-black">
       {/* ASCII Animation Container */}
       <div style={{ width: "100%", height: "600px", position: "relative" }}>
         <GradientASCII
@@ -52,24 +52,31 @@ export function HeroASCIIBanner({
           lightMode={false}
         />
 
+        {/* Soft edge fade vignette to blend naturally without hard card cutout */}
+        <div className="absolute inset-0 pointer-events-none rounded-3xl shadow-[inset_0_0_90px_rgba(0,0,0,0.55)]" />
+        <div className="absolute inset-0 pointer-events-none rounded-3xl bg-[radial-gradient(circle_at_center,transparent_55%,rgba(0,0,0,0.35)_100%)]" />
+
+        {/* Ambient bottom glow radiating downward (Cloudflare style) */}
+        <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 w-72 sm:w-[440px] h-28 bg-gradient-to-t from-amber-200/40 via-orange-500/20 to-transparent blur-2xl rounded-full pointer-events-none" />
+
         {/* Hero Overlay Content */}
         <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center px-6 sm:px-12 pointer-events-none select-none">
-          <div className="max-w-3xl space-y-5">
-            <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white leading-[1.15] drop-shadow-md">
+          <div className="max-w-3xl space-y-4 sm:space-y-5">
+            <h1 className="text-2xl sm:text-4xl md:text-[42px] font-bold tracking-tight text-white leading-[1.22] max-w-3xl mx-auto [text-wrap:balance] drop-shadow-md">
               {title}
             </h1>
 
-            <p className="max-w-xl mx-auto text-xs sm:text-sm text-zinc-100/90 leading-relaxed drop-shadow">
+            <p className="max-w-lg sm:max-w-xl mx-auto text-xs sm:text-sm text-zinc-100/90 leading-relaxed drop-shadow [text-wrap:balance]">
               {subtitle}
             </p>
 
-            <div className="pt-3 pointer-events-auto">
+            <div className="pt-2 sm:pt-3 pointer-events-auto">
               <a
                 href={ctaHref}
                 className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white text-zinc-950 font-medium text-xs hover:bg-zinc-100 transition-colors shadow-lg active:scale-95"
               >
                 <span>{ctaText}</span>
-                <SlArrowRight className="size-2.5 text-zinc-950" />
+                <SlArrowRight className="size-2 text-zinc-950" />
               </a>
             </div>
           </div>
