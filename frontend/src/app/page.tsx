@@ -1,6 +1,5 @@
 import React from "react";
 import Image from "next/image";
-import { ThemeToggle } from "@/components/theme-toggle";
 import { HeroASCIIBanner } from "@/components/hero-ascii-banner";
 import { RegionEarthSection } from "@/components/region-earth-section";
 import {
@@ -103,8 +102,6 @@ export default async function HomePage() {
             >
               <SlMagnifier className="size-3.5" />
             </button>
-
-            <ThemeToggle />
           </div>
         </div>
       </header>
