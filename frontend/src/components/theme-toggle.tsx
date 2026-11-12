@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { SlBulb } from "react-icons/sl";
 
 export function ThemeToggle() {
   const [theme, setTheme] = useState<"light" | "dark">("dark");
@@ -17,7 +18,6 @@ export function ThemeToggle() {
         document.documentElement.classList.remove("dark");
       }
     } else {
-      // Default to dark
       document.documentElement.classList.add("dark");
     }
   }, []);
@@ -35,7 +35,7 @@ export function ThemeToggle() {
 
   if (!mounted) {
     return (
-      <div className="h-8 w-16 rounded-full bg-muted border border-border animate-pulse" />
+      <div className="h-8 w-20 rounded-full bg-muted border border-border animate-pulse" />
     );
   }
 
@@ -46,7 +46,8 @@ export function ThemeToggle() {
       className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium border border-border bg-card text-foreground hover:bg-muted transition-colors shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
       aria-label="Toggle theme"
     >
-      <span className="text-xs">{theme === "dark" ? "🌙 Dark" : "☀️ Light"}</span>
+      <SlBulb className={`size-3.5 ${theme === "dark" ? "text-primary" : "text-foreground"}`} />
+      <span className="text-[11px] font-mono capitalize">{theme}</span>
     </button>
   );
 }

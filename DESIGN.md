@@ -10,8 +10,14 @@ This document establishes the official Design System guidelines, token definitio
 2. **Anti-Card-Nesting**: Never nest a `<Card>` inside another `<Card>`. Use surface luminosity shifts (Inset Boxes) instead.
 3. **Capsule / Pill Anatomy**: Buttons and interactive toggles use pill shapes (`rounded-full`). Exactly **ONE** primary action per view.
 4. **Strict Non-Breaking Units ("ไม่เอาหน่วยแตก")**: Physical metrics, currencies, and engineering values (e.g. `16 GB`, `2 TB`, `$2,499 USD`, `120 Hz`) must never break across lines (`whitespace-nowrap`, `tabular-nums`, `font-mono`).
-5. **Anti-AI-Slop**: Zero rainbow/purple gradients, zero text gradients, zero neon glows, zero glassmorphism, zero emoji icons, zero decorative status badges.
-6. **Concise Copywriting**: Short, punchy labels without redundant explanations or parenthetical language translations.
+5. **Strict Icon Standard (`react-icons/sl` Only)**:
+   - ใช้เฉพาะชุดไอคอนจาก **Simple Line Icons (`react-icons/sl`)** เท่านั้น:
+     ```tsx
+     import { IconName } from "react-icons/sl";
+     ```
+   - ห้ามใช้ icon library อื่น (เช่น Lucide, FontAwesome, Material, Phosphor) และห้ามใช้อีโมจิตกแต่งเป็นอันขาด
+6. **Anti-AI-Slop**: Zero rainbow/purple gradients, zero text gradients, zero neon glows, zero glassmorphism, zero emoji icons, zero decorative status badges.
+7. **Concise Copywriting**: Short, punchy labels without redundant explanations or parenthetical language translations.
 
 ---
 

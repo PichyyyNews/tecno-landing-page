@@ -1,5 +1,14 @@
 import React from "react";
 import { ThemeToggle } from "@/components/theme-toggle";
+import {
+  SlEnergy,
+  SlScreenDesktop,
+  SlLayers,
+  SlChart,
+  SlCheck,
+  SlArrowRight,
+  SlClock
+} from "react-icons/sl";
 
 // Incremental Static Regeneration (ISR)
 export const revalidate = 60;
@@ -73,8 +82,8 @@ export default async function HomePage() {
       <header className="border-b border-border bg-card/60 backdrop-blur-sm sticky top-0 z-50">
         <div className="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
           <div className="flex items-center space-x-3">
-            <div className="w-7 h-7 rounded-lg bg-primary text-primary-foreground font-mono font-bold text-xs flex items-center justify-center">
-              NX
+            <div className="w-7 h-7 rounded-lg bg-primary text-primary-foreground flex items-center justify-center">
+              <SlEnergy className="size-3.5" />
             </div>
             <span className="font-semibold text-sm tracking-tight text-foreground">
               Nexus Systems
@@ -90,7 +99,7 @@ export default async function HomePage() {
 
           <div className="flex items-center space-x-3">
             <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono border border-border bg-muted text-muted-foreground whitespace-nowrap shrink-0">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+              <SlCheck className="size-3 text-emerald-500" />
               Caddy 2 :80
             </span>
             <ThemeToggle />
@@ -102,7 +111,8 @@ export default async function HomePage() {
       <main className="max-w-6xl mx-auto px-6 py-12 space-y-16">
         {/* Intro Zone */}
         <section className="space-y-4 max-w-2xl">
-          <div className="inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-mono bg-secondary text-secondary-foreground border border-border whitespace-nowrap">
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono bg-secondary text-secondary-foreground border border-border whitespace-nowrap">
+            <SlLayers className="size-3" />
             SSG + ISR Architecture · Next.js 16
           </div>
 
@@ -117,9 +127,10 @@ export default async function HomePage() {
           <div className="flex items-center gap-3 pt-2">
             <a
               href="#hardware"
-              className="px-5 py-2 rounded-full bg-primary text-primary-foreground text-xs font-medium hover:opacity-90 transition-opacity"
+              className="inline-flex items-center gap-1.5 px-5 py-2 rounded-full bg-primary text-primary-foreground text-xs font-medium hover:opacity-90 transition-opacity"
             >
               Browse Catalog
+              <SlArrowRight className="size-2.5" />
             </a>
             <a
               href="#architecture"
@@ -133,13 +144,17 @@ export default async function HomePage() {
         {/* Hardware Catalog Section */}
         <section id="hardware" className="space-y-6">
           <div className="flex items-end justify-between pb-3 border-b border-border">
-            <div>
-              <h2 className="text-lg font-semibold text-foreground">Computer Systems</h2>
-              <p className="text-xs text-muted-foreground mt-0.5">
-                Source: <span className="font-mono text-foreground">{source}</span>
-              </p>
+            <div className="flex items-center gap-2">
+              <SlScreenDesktop className="size-4 text-primary" />
+              <div>
+                <h2 className="text-lg font-semibold text-foreground">Computer Systems</h2>
+                <p className="text-xs text-muted-foreground mt-0.5">
+                  Source: <span className="font-mono text-foreground">{source}</span>
+                </p>
+              </div>
             </div>
-            <span className="text-[11px] font-mono text-muted-foreground px-2.5 py-1 rounded-full bg-muted border border-border whitespace-nowrap shrink-0">
+            <span className="inline-flex items-center gap-1 text-[11px] font-mono text-muted-foreground px-2.5 py-1 rounded-full bg-muted border border-border whitespace-nowrap shrink-0">
+              <SlClock className="size-2.5" />
               Cache: 60s
             </span>
           </div>
@@ -177,9 +192,10 @@ export default async function HomePage() {
                 <div className="pt-4 mt-2">
                   <button
                     type="button"
-                    className="w-full py-2 px-3 rounded-full text-xs font-medium border border-border bg-card text-foreground hover:bg-muted transition-colors"
+                    className="w-full inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-full text-xs font-medium border border-border bg-card text-foreground hover:bg-muted transition-colors"
                   >
                     Configure
+                    <SlArrowRight className="size-2.5" />
                   </button>
                 </div>
               </div>
@@ -189,11 +205,14 @@ export default async function HomePage() {
 
         {/* Stack Architecture Section */}
         <section id="architecture" className="space-y-6">
-          <div className="pb-3 border-b border-border">
-            <h2 className="text-lg font-semibold text-foreground">Stack Hierarchy</h2>
-            <p className="text-xs text-muted-foreground mt-0.5">
-              Multi-tier containerized production topology
-            </p>
+          <div className="flex items-center gap-2 pb-3 border-b border-border">
+            <SlLayers className="size-4 text-primary" />
+            <div>
+              <h2 className="text-lg font-semibold text-foreground">Stack Hierarchy</h2>
+              <p className="text-xs text-muted-foreground mt-0.5">
+                Multi-tier containerized production topology
+              </p>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
@@ -238,7 +257,10 @@ export default async function HomePage() {
         {/* Diagnostics & Ledger Section */}
         <section id="diagnostics" className="rounded-2xl border border-border bg-card p-6 space-y-4">
           <div className="flex items-center justify-between pb-3 border-b border-border">
-            <h3 className="text-sm font-semibold text-foreground">System Diagnostics</h3>
+            <div className="flex items-center gap-2">
+              <SlChart className="size-4 text-primary" />
+              <h3 className="text-sm font-semibold text-foreground">System Diagnostics</h3>
+            </div>
             <span className="text-[11px] font-mono px-2 py-0.5 rounded-full bg-secondary text-secondary-foreground border border-border whitespace-nowrap">
               revalidate = 60s
             </span>
@@ -251,8 +273,9 @@ export default async function HomePage() {
             </div>
             <div className="p-3 rounded-xl bg-muted border border-border flex items-center justify-between">
               <span className="text-muted-foreground">Health Endpoint</span>
-              <a href="/api/health" className="text-foreground hover:underline">
-                /api/health →
+              <a href="/api/health" className="inline-flex items-center gap-1 text-foreground hover:underline">
+                /api/health
+                <SlArrowRight className="size-2.5" />
               </a>
             </div>
           </div>

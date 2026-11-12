@@ -64,7 +64,13 @@ Every agent modifying or creating frontend files MUST follow `DESIGN.md`, `clean
 4. **Strict Non-Breaking Units ("ไม่เอาหน่วยแตก")**:
    - Badges, currencies, and technical measurements (e.g. `16 GB`, `2 TB`, `$2,499 USD`, `120 Hz`, `60s`) must never wrap across lines.
    - Always enforce `whitespace-nowrap tabular-nums font-mono shrink-0` and non-breaking space `&nbsp;`.
-5. **Anti-AI-Slop Rules**:
+5. **Icon Standard (`react-icons/sl` Only)**:
+   - ใช้เฉพาะชุดไอคอนจาก Simple Line Icons (`react-icons/sl`) เท่านั้น:
+     ```tsx
+     import { IconName } from "react-icons/sl";
+     ```
+   - ห้ามใช้ Lucide, FontAwesome, Phosphor หรือ Emoji เป็นไอคอน
+6. **Anti-AI-Slop Rules**:
    - No purple/rainbow gradients on buttons or backgrounds.
    - No gradient text (`bg-clip-text`).
    - No neon glowing shadows (`shadow-cyan-500`, etc.).
