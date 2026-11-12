@@ -2,14 +2,12 @@ import React from "react";
 import Image from "next/image";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { HeroASCIIBanner } from "@/components/hero-ascii-banner";
+import { RegionEarthSection } from "@/components/region-earth-section";
 import {
   SlMagnifier,
   SlArrowDown,
   SlArrowRight,
   SlCheck,
-  SlLayers,
-  SlScreenDesktop,
-  SlChart
 } from "react-icons/sl";
 
 // Incremental Static Regeneration (ISR)
@@ -133,48 +131,8 @@ export default async function HomePage() {
           {/* 2. Horizontal dashed line below hero - tight margin */}
           <div className="w-screen relative left-1/2 -translate-x-1/2 border-b border-dashed border-foreground/15 dark:border-white/10 -mt-2 sm:-mt-1" />
 
-          {/* Subheader Section below Hero (Cloudflare Style) */}
-          <section className="text-center max-w-2xl mx-auto space-y-3 pt-2 pb-6">
-            <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-foreground">
-              Region: Earth
-            </h2>
-            <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-              One smart platform for high-throughput compute, security, and neural workloads — close to users, close to silicon.
-            </p>
-          </section>
-
-          {/* Core Pillars / Value Propositions (Minimal Clean UI) */}
-          <section id="solutions" className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
-            <div className="rounded-2xl border border-border bg-card p-6 space-y-3">
-              <div className="w-8 h-8 rounded-xl bg-secondary flex items-center justify-center text-secondary-foreground">
-                <SlScreenDesktop className="size-4 text-primary" />
-              </div>
-              <h3 className="text-sm font-semibold text-foreground">High-Throughput Workstations</h3>
-              <p className="text-xs text-muted-foreground leading-relaxed">
-                Custom-built desktop and rackmount rigs optimized for LLM fine-tuning, complex 3D rendering, and multi-core compilation.
-              </p>
-            </div>
-
-            <div className="rounded-2xl border border-border bg-card p-6 space-y-3">
-              <div className="w-8 h-8 rounded-xl bg-secondary flex items-center justify-center text-secondary-foreground">
-                <SlLayers className="size-4 text-primary" />
-              </div>
-              <h3 className="text-sm font-semibold text-foreground">Next-Gen Software Stack</h3>
-              <p className="text-xs text-muted-foreground leading-relaxed">
-                Native SSG/ISR caching with Next.js 16, concurrent Go API microservices, and automated Caddy edge proxy routing.
-              </p>
-            </div>
-
-            <div className="rounded-2xl border border-border bg-card p-6 space-y-3">
-              <div className="w-8 h-8 rounded-xl bg-secondary flex items-center justify-center text-secondary-foreground">
-                <SlChart className="size-4 text-primary" />
-              </div>
-              <h3 className="text-sm font-semibold text-foreground">Sub-Millisecond Edge Gateway</h3>
-              <p className="text-xs text-muted-foreground leading-relaxed">
-                Enterprise security, automatic SSL/TLS termination, and database health observability directly out of the box.
-              </p>
-            </div>
-          </section>
+          {/* Region: Earth 3D Globe Section (Interactive Cobe Globe) */}
+          <RegionEarthSection />
         </main>
       </div>
 
