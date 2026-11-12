@@ -13,8 +13,57 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Nexus Systems | Technology & Hardware",
-  description: "High-performance computing workstations and neural rigs.",
+  title: {
+    default: "Technology Computer | High-Performance Computing & Workstation Solutions",
+    template: "%s | Technology Computer",
+  },
+  description:
+    "High-performance workstations, neural compute rigs, and enterprise computing infrastructure engineered for speed, machine learning, and maximum throughput.",
+  keywords: [
+    "Technology Computer",
+    "Workstation",
+    "High-Performance Computing",
+    "AI Rig",
+    "Deep Learning Workstation",
+    "Enterprise Hardware",
+  ],
+  authors: [{ name: "Technology Computer Systems" }],
+  creator: "Technology Computer Systems",
+  metadataBase: new URL("http://localhost"),
+  icons: {
+    icon: [
+      { url: "/logo.svg", type: "image/svg+xml" },
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+    apple: [{ url: "/logo.svg" }],
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "/",
+    siteName: "Technology Computer",
+    title: "Technology Computer | High-Performance Computing & Workstation Solutions",
+    description:
+      "High-performance workstations, neural compute rigs, and enterprise computing infrastructure engineered for maximum throughput.",
+    images: [
+      {
+        url: "/logo.svg",
+        width: 1920,
+        height: 1920,
+        alt: "Technology Computer Logo",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Technology Computer | High-Performance Computing",
+    description: "High-performance workstations and enterprise infrastructure.",
+    images: ["/logo.svg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
