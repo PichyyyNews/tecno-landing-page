@@ -119,8 +119,8 @@ export default async function HomePage() {
         <div className="max-w-7xl mx-auto pointer-events-none absolute inset-0 border-x border-dashed border-foreground/15 dark:border-white/10" />
 
         {/* Main Content Area */}
-        <main className="max-w-7xl mx-auto px-4 sm:px-6 w-full pt-8 pb-16 space-y-12 relative z-10">
-          {/* Central Hero Box with React Bits GradientASCII */}
+        <main className="max-w-7xl mx-auto px-3 sm:px-4 md:px-5 w-full pt-2.5 sm:pt-3 pb-16 space-y-8 relative z-10">
+          {/* Central Hero Box with React Bits GradientASCII - tight Cloudflare-style margins */}
           <section className="w-full">
             <HeroASCIIBanner
               title="Everything we learned from engineering high-performance compute — yours by default"
@@ -130,11 +130,11 @@ export default async function HomePage() {
             />
           </section>
 
-          {/* 2. Horizontal dashed line below hero */}
-          <div className="w-screen relative left-1/2 -translate-x-1/2 border-b border-dashed border-foreground/15 dark:border-white/10" />
+          {/* 2. Horizontal dashed line below hero - tight margin */}
+          <div className="w-screen relative left-1/2 -translate-x-1/2 border-b border-dashed border-foreground/15 dark:border-white/10 -mt-2 sm:-mt-1" />
 
           {/* Subheader Section below Hero (Cloudflare Style) */}
-          <section className="text-center max-w-2xl mx-auto space-y-3 py-6">
+          <section className="text-center max-w-2xl mx-auto space-y-3 pt-2 pb-6">
             <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-foreground">
               Region: Earth
             </h2>
