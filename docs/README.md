@@ -87,7 +87,10 @@
   - ติดตั้งไลบรารีแอนิเมชัน `gsap` และสร้างคอมโพเนนต์ `AccordionGallery.tsx` พร้อม `AccordionGallery.css`
   - คุมโทนสี Dark Mode (`accentColor="#fd5714"`, `overlayColor="#09090b"`)
   - นำเข้าภาพ Unsplash จำลองฮาร์ดแวร์ระดับ Data Center / Workstation (Dual Xeon/EPYC, 8-Way Tensor Clusters, Sub-Zero Liquid Cooling, 4U Chassis, 400Gbps Fabric)
-  - ใส่กล่องชี้วัดสเปกระดับวิศวกรรม 3 ช่องด้านล่าง พร้อมบังคับใช้กฎ Non-breaking units และไอคอน `react-icons/sl` (`SlSpeedometer`, `SlLayers`, `SlEnergy`)
+- [x] **Silicon & Framework Ecosystem Logo Loop (React Bits)**:
+  - ติดตั้งคอมโพเนนต์ `LogoLoop.tsx` และ `LogoLoop.css` รองรับ Physics Drag, Edge Fade, Hover Scale, Muted Greyscale
+  - รวบรวมแบรนด์ฮาร์ดแวร์และเฟรมเวิร์กระดับองค์กร: NVIDIA, AMD, Intel, Linux, Ubuntu, Red Hat, Docker, Kubernetes, PyTorch, TensorFlow, Go, PostgreSQL
+  - ผูกสี Brand Accent ประจำแต่ละค่ายเมื่อนำเมาส์ไปชี้ (Hover Color) พร้อมเอฟเฟกต์ Pause on hover ที่ลื่นไหล
 
 ---
 

@@ -4,6 +4,7 @@ import { Navbar } from "@/components/navbar";
 import { HeroASCIIBanner } from "@/components/hero-ascii-banner";
 import { RegionEarthSection } from "@/components/region-earth-section";
 import { WorkstationsGallerySection } from "@/components/workstations-gallery-section";
+import { TechPartnersSection } from "@/components/tech-partners-section";
 import { SlArrowRight } from "react-icons/sl";
 
 // Incremental Static Regeneration (ISR)
@@ -45,6 +46,12 @@ export default async function HomePage() {
 
           {/* Hardware Showcase Accordion Gallery (React Bits) */}
           <WorkstationsGallerySection />
+
+          {/* 4. Horizontal dashed line between Hardware Gallery and Partners Loop */}
+          <div className="w-screen relative left-1/2 -translate-x-1/2 border-b border-dashed border-foreground/15 dark:border-white/10" />
+
+          {/* Silicon & Ecosystem Partners Logo Loop (React Bits) */}
+          <TechPartnersSection />
         </main>
       </div>
 
