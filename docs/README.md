@@ -56,8 +56,9 @@
   - สร้างไฟล์ `docker-compose.yml` (Production Standalone) และ `docker-compose.dev.yml` (Dev Hot-Reload)
   - ติดตั้ง Caddy Reverse Proxy จัดเส้นทาง `/api/*` และ `/health` เข้า Go Backend และเส้นทางหลักเข้า Next.js
   - เชื่อมต่อ Go Backend เข้ากับ PostgreSQL พร้อมฟังก์ชันจำลองข้อมูลเริ่มต้น (Seeding)
-- [x] **การนำทางและ Header Navbar**:
+- [x] **การนำทางและ Header Navbar (Sticky Frosted Glass)**:
   - ติดตั้งโลโก้แบรนด์ `public/logo.png` (ปรับขนาดเพิ่ม 10% เป็น 46px ไม่มีพื้นหลังสีขาวกวนตา)
+  - รองรับ Scroll Detection: เมื่อเลื่อนหน้าจอลง (`scrollY > 15px`) แถบ Navbar จะตามลงมาด้วยสไตล์ Frosted Glass มัวลึก (`backdrop-blur-xl bg-background/65 border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.45)]`) พร้อมปรับขนาดความสูงให้นุ่มนวล
   - เมนูนำทางแบบมินิมอล: Products, Solutions, Resources, Pricing
   - ตัวแสดงสถานะแบบเรียลไทม์ `System Live` พร้อมไอคอน `SlCheck` เชื่อมกับ `/api/health`
   - ปุ่ม Action: Dashboard, Contact sales, และ Search `SlMagnifier`
