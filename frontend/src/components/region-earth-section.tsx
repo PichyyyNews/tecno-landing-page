@@ -3,6 +3,7 @@
 import React from "react";
 import dynamic from "next/dynamic";
 import { SlGlobe, SlLocationPin, SlSizeFullscreen } from "react-icons/sl";
+import BorderGlow from "@/components/ui/BorderGlow";
 
 const GlobeCdn = dynamic(
   () => import("@/components/ui/cobe-globe-cdn").then((mod) => mod.GlobeCdn),
@@ -72,47 +73,80 @@ export function RegionEarthSection() {
         </div>
       </div>
 
-      {/* 3 Value Pillars - Overlapping bottom of Globe sphere */}
+      {/* 3 Value Pillars - Overlapping bottom of Globe sphere with BorderGlow */}
       <div className="relative z-20 border-t border-border/60 bg-background/90 backdrop-blur-md pt-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-border/60">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
           {/* Pillar 1 */}
-          <div className="p-6 space-y-3">
-            <div className="w-8 h-8 rounded-lg bg-secondary/80 flex items-center justify-center text-primary">
-              <SlGlobe className="size-4" />
+          <BorderGlow
+            edgeSensitivity={30}
+            glowColor="16.9 100 65"
+            backgroundColor="#09090b"
+            borderRadius={20}
+            glowRadius={36}
+            glowIntensity={1.0}
+            coneSpread={25}
+            colors={["#fd5714", "#ff8442", "#ffe29a"]}
+          >
+            <div className="p-6 space-y-3">
+              <div className="w-8 h-8 rounded-lg bg-secondary/80 flex items-center justify-center text-primary">
+                <SlGlobe className="size-4" />
+              </div>
+              <h3 className="text-sm font-semibold text-foreground">
+                Run everywhere
+              </h3>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Security, connectivity, and code run in 335+ cities around the world, within 50ms of 95% of the world&apos;s population.
+              </p>
             </div>
-            <h3 className="text-sm font-semibold text-foreground">
-              Run everywhere
-            </h3>
-            <p className="text-xs text-muted-foreground leading-relaxed">
-              Security, connectivity, and code run in 335+ cities around the world, within 50ms of 95% of the world&apos;s population.
-            </p>
-          </div>
+          </BorderGlow>
 
           {/* Pillar 2 */}
-          <div className="p-6 space-y-3">
-            <div className="w-8 h-8 rounded-lg bg-secondary/80 flex items-center justify-center text-primary">
-              <SlLocationPin className="size-4" />
+          <BorderGlow
+            edgeSensitivity={30}
+            glowColor="16.9 100 65"
+            backgroundColor="#09090b"
+            borderRadius={20}
+            glowRadius={36}
+            glowIntensity={1.0}
+            coneSpread={25}
+            colors={["#fd5714", "#ff8442", "#ffe29a"]}
+          >
+            <div className="p-6 space-y-3">
+              <div className="w-8 h-8 rounded-lg bg-secondary/80 flex items-center justify-center text-primary">
+                <SlLocationPin className="size-4" />
+              </div>
+              <h3 className="text-sm font-semibold text-foreground">
+                Run anywhere
+              </h3>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Our network is close to your users, applications, and sites. It optimizes all your traffic from source to destination for low latency.
+              </p>
             </div>
-            <h3 className="text-sm font-semibold text-foreground">
-              Run anywhere
-            </h3>
-            <p className="text-xs text-muted-foreground leading-relaxed">
-              Our network is close to your users, applications, and sites. It optimizes all your traffic from source to destination for low latency.
-            </p>
-          </div>
+          </BorderGlow>
 
           {/* Pillar 3 */}
-          <div className="p-6 space-y-3">
-            <div className="w-8 h-8 rounded-lg bg-secondary/80 flex items-center justify-center text-primary">
-              <SlSizeFullscreen className="size-4" />
+          <BorderGlow
+            edgeSensitivity={30}
+            glowColor="16.9 100 65"
+            backgroundColor="#09090b"
+            borderRadius={20}
+            glowRadius={36}
+            glowIntensity={1.0}
+            coneSpread={25}
+            colors={["#fd5714", "#ff8442", "#ffe29a"]}
+          >
+            <div className="p-6 space-y-3">
+              <div className="w-8 h-8 rounded-lg bg-secondary/80 flex items-center justify-center text-primary">
+                <SlSizeFullscreen className="size-4" />
+              </div>
+              <h3 className="text-sm font-semibold text-foreground">
+                Run at massive scale
+              </h3>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                No more capacity planning. Ever.
+              </p>
             </div>
-            <h3 className="text-sm font-semibold text-foreground">
-              Run at massive scale
-            </h3>
-            <p className="text-xs text-muted-foreground leading-relaxed">
-              No more capacity planning. Ever.
-            </p>
-          </div>
+          </BorderGlow>
         </div>
       </div>
     </section>

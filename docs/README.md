@@ -77,8 +77,9 @@
   - ทำจุดมาร์กเกอร์สีส้มทรงกลม แสดงไอคอนผู้ใช้งาน `SlUser` และแหล่งข้อมูล `SlLayers`
   - เชื่อมสายส่งข้อมูล (Traffic Arcs) ข้ามทวีป พร้อมตัวเลข throughput สุ่มขยับแบบเรียลไทม์
   - เพิ่มกล่อง Technical Callout มุม Bracket สองฝั่งซ้าย-ขวา
-  - ขยายลูกโลกให้ใหญ่ขึ้นตามตัวอย่าง และปรับระยะให้ขอบล่างของลูกโลกซ้อนเหลื่อมอยู่หลัง 3 เสาคุณค่า (Value Pillars: Run everywhere, Run anywhere, Run at massive scale)
+  - ขยายลูกโลกให้ใหญ่ขึ้นตามตัวอย่าง และปรับระยะให้ขอบล่างของลูกโลกซ้อนเหลื่อมอยู่หลัง 3 เสาคุณค่า
   - ปรับลดความเร็วการหมุนลงให้ดูนิ่ง สบายตา (`speed={0.0012}`)
+  - **อัปเกรด 3 เสาคุณค่าด้วย `<BorderGlow />` จาก React Bits**: เปลี่ยนการ์ด "Run everywhere", "Run anywhere", "Run at massive scale" ให้มี Mesh Gradient Border พร้อม Directional Cone Glow เคลื่อนตามตำแหน่งเคอร์เซอร์เมาส์ในโทนสีส้ม Sunrise (`#fd5714`, `#ff8442`, `#ffe29a`) บนพื้นหลัง Obsidian (`#09090b`)
 - [x] **ระบบ Pure Dark Mode ถาวร**:
   - ปรับค่า `:root` ใน `globals.css` เป็นโทนสีดำมืดสนิท Obsidian (`hsl(0, 0%, 3.5%)`) เป็นค่าตั้งต้น
   - ใส่ `style={{ colorScheme: "dark" }}` ในแท็ก `<html>` เพื่อล็อก native scrollbar และ UI ให้มืดสนิท
