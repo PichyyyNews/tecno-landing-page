@@ -82,6 +82,11 @@
   - ปรับค่า `:root` ใน `globals.css` เป็นโทนสีดำมืดสนิท Obsidian (`hsl(0, 0%, 3.5%)`) เป็นค่าตั้งต้น
   - ใส่ `style={{ colorScheme: "dark" }}` ในแท็ก `<html>` เพื่อล็อก native scrollbar และ UI ให้มืดสนิท
   - ถอดปุ่ม `<ThemeToggle />` และโค้ด Light Theme ออก เพื่อคุมโทนให้ตรงตามสเปก 100%
+- [x] **Hardware Showcase Accordion Gallery (React Bits + GSAP)**:
+  - ติดตั้งไลบรารีแอนิเมชัน `gsap` และสร้างคอมโพเนนต์ `AccordionGallery.tsx` พร้อม `AccordionGallery.css`
+  - คุมโทนสี Dark Mode (`accentColor="#fd5714"`, `overlayColor="#09090b"`)
+  - นำเข้าภาพ Unsplash จำลองฮาร์ดแวร์ระดับ Data Center / Workstation (Dual Xeon/EPYC, 8-Way Tensor Clusters, Sub-Zero Liquid Cooling, 4U Chassis, 400Gbps Fabric)
+  - ใส่กล่องชี้วัดสเปกระดับวิศวกรรม 3 ช่องด้านล่าง พร้อมบังคับใช้กฎ Non-breaking units และไอคอน `react-icons/sl` (`SlSpeedometer`, `SlLayers`, `SlEnergy`)
 
 ---
 

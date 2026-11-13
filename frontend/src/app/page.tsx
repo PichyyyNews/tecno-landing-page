@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { HeroASCIIBanner } from "@/components/hero-ascii-banner";
 import { RegionEarthSection } from "@/components/region-earth-section";
+import { WorkstationsGallerySection } from "@/components/workstations-gallery-section";
 import {
   SlMagnifier,
   SlArrowDown,
@@ -130,6 +131,12 @@ export default async function HomePage() {
 
           {/* Region: Earth 3D Globe Section (Interactive Cobe Globe) */}
           <RegionEarthSection />
+
+          {/* 3. Horizontal dashed line between Region Earth and Hardware Gallery */}
+          <div className="w-screen relative left-1/2 -translate-x-1/2 border-b border-dashed border-foreground/15 dark:border-white/10" />
+
+          {/* Hardware Showcase Accordion Gallery (React Bits) */}
+          <WorkstationsGallerySection />
         </main>
       </div>
 
