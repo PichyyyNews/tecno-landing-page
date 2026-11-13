@@ -6,9 +6,15 @@ import { SlArrowDown, SlCheck, SlMagnifier } from "react-icons/sl";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
+      const totalHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
+      if (totalHeight > 0) {
+        setScrollProgress((window.scrollY / totalHeight) * 100);
+      }
       if (window.scrollY > 15) {
         setIsScrolled(true);
       } else {
@@ -126,6 +132,12 @@ export function Navbar() {
           </button>
         </div>
       </div>
+
+      {/* Thin Frosted Orange Glass Scroll Progress Bar */}
+      <div
+        className="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-primary via-[#ff8442] to-[#ffe29a] transition-[width] duration-75 ease-out shadow-[0_0_8px_rgba(253,87,20,0.8)] opacity-90"
+        style={{ width: `${scrollProgress}%` }}
+      />
     </header>
   );
 }

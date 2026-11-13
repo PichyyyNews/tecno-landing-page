@@ -92,6 +92,9 @@
   - ติดตั้งคอมโพเนนต์ `LogoLoop.tsx` และ `LogoLoop.css` รองรับ Physics Drag, Edge Fade, Hover Scale, Muted Greyscale
   - รวบรวมแบรนด์ฮาร์ดแวร์และเฟรมเวิร์กระดับองค์กร: NVIDIA, AMD, Intel, Linux, Ubuntu, Red Hat, Docker, Kubernetes, PyTorch, TensorFlow, Go, PostgreSQL
   - ผูกสี Brand Accent ประจำแต่ละค่ายเมื่อนำเมาส์ไปชี้ (Hover Color) พร้อมเอฟเฟกต์ Pause on hover ที่ลื่นไหล
+- [x] **Custom Thin Orange Glass Scroller & Scroll Progress Indicator**:
+  - ออกแบบ Scrollbar ทั้งหน้าเว็บให้บางกระชับ (`width: 6px`) สไตล์กระจก Frosted Glass ขอบมน Pill shape สีส้ม Sunrise (`rgba(253, 87, 20, 0.4)` พร้อม hover glow `#fd5714`) บนพื้นหลังโปร่งแสง
+  - เพิ่มเส้นระบุความลึกการอ่าน (Reading Scroll Progress Bar) ความหนาเพียง 2px บริเวณใต้ Navbar ติดตั้งแบบ Frosted Glass Glow วิ่งตามเปอร์เซ็นต์การเลื่อนหน้าจอจริงตั้งแต่ 0% ถึง 100%
 
 ---
 

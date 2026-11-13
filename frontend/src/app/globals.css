@@ -51,6 +51,39 @@
     padding: 0;
     transition: background-color 0.2s ease, color 0.2s ease;
   }
+
+  /* Custom Thin Frosted Glass Orange Scrollbar */
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(253, 87, 20, 0.45) transparent;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(253, 87, 20, 0.4);
+    border-radius: 9999px;
+    border: 1px solid rgba(253, 87, 20, 0.2);
+    backdrop-filter: blur(8px);
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(253, 87, 20, 0.85);
+    box-shadow: 0 0 10px rgba(253, 87, 20, 0.5);
+  }
+
+  ::-webkit-scrollbar-thumb:active {
+    background: #fd5714;
+    box-shadow: 0 0 14px rgba(253, 87, 20, 0.8);
+  }
 }
 
 @theme inline {
