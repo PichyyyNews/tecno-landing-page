@@ -94,14 +94,16 @@
   - ผูกสี Brand Accent ประจำแต่ละค่ายเมื่อนำเมาส์ไปชี้ (Hover Color) พร้อมเอฟเฟกต์ Pause on hover ที่ลื่นไหล
 - [x] **Custom Thin Orange Glass Scroller**:
   - ออกแบบ Scrollbar ทั้งหน้าเว็บให้บางกระชับ (`width: 6px`) สไตล์กระจก Frosted Glass ขอบมน Pill shape สีส้ม Sunrise (`rgba(253, 87, 20, 0.4)` พร้อม hover glow `#fd5714`) บนพื้นหลังโปร่งแสง สะอาดตา
-- [x] **ScrollFloat Animation สำหรับ Section Headlines (React Bits + GSAP ScrollTrigger)**:
-  - ติดตั้งคอมโพเนนต์ `ScrollFloat.tsx` และ `ScrollFloat.css` ทำงานคู่กับ `gsap/ScrollTrigger`
-  - ส่วนหัวเรื่องหลัก **Hero Headline** ใช้ Semantic `<h1>` คมชัดเพื่อแสดงผลทันทีบนหน้าแรก (Above-the-fold) ป้องกันปัญหาตัวอักษรจางหายหรือติด Opacity: 0 ก่อนเริ่มเลื่อนหน้าจอ
-  - นำ `ScrollFloat` ไปใช้กับข้อความพาดหัวของ Section ต่างๆ เมื่อผู้ใช้เลื่อนลงมา (Below-the-fold):
-    - **Region: Earth Headline**: "Region: Earth"
-    - **Hardware Showcase Headline**: "Silicon-optimized compute systems — built for extreme sustained loads"
-    - **Silicon Ecosystem Subtitle**: "Engineered & validated for industry-standard silicon architectures"
-  - ข้อความจะค่อยๆ ลอยขึ้น (Float-in) และแยกเป็นคำ/ตัวอักษรอย่างลื่นไหลเมื่อเลื่อนหน้าจอลงมาถึงจุดนั้นๆ
+- [x] **ScrollFloat Animation สำหรับ Headlines ทั้งหมด (React Bits + GSAP ScrollTrigger)**:
+  - ปรับปรุงคอมโพเนนต์ `ScrollFloat.tsx` และ `ScrollFloat.css` ให้รองรับทั้งโหมดโหลดหน้าแรก (`animateOnMount`) และโหมดเลื่อนหน้าจอ (`ScrollTrigger` แบบ Smooth Inertia):
+    - แก้ไขข้อผิดพลาด `clamp(bottom bottom-=40%)` ใน GSAP โดยสร้าง helper ที่ไม่ครอบ `clamp()` ทับนิพจน์ออฟเซต ทำให้ ScrollTrigger ทำงานได้อย่างถูกต้อง 100% ไม่มี Console Error
+    - ปรับระยะทริกเกอร์เป็น `start: "top 85%"`, `end: "bottom 60%"` เพื่อให้อนิเมชันแสดงผลขณะที่หัวข้อเลื่อนเข้ามาในระยะสายตาของผู้ใช้พอดี
+    - ป้องกันปัญหาตัวอักษรจมหรือล้นกรอบด้วย vertical padding `0.12em`
+  - นำไปใช้กับข้อความพาดหัวทั้งหมด:
+    - **Hero Headline**: อนิเมชัน Float-in ลอยขึ้นอย่างนุ่มนวลทันทีตั้งแต่โหลดหน้าแรก (`animateOnMount`) ตัวอักษรคมชัด ไม่จางหาย
+    - **Region: Earth Headline**: ตัวอักษรค่อยๆ ลอยขึ้นทีละตัว (`splitBy="chars"`) ขณะเลื่อนจอ
+    - **Hardware Showcase Headline**: ข้อความลอยขึ้นทีละคำ (`splitBy="words"`) อย่างต่อเนื่อง
+    - **Silicon Ecosystem Subtitle**: ข้อความสเปกระบบลอยขึ้นทีละคำรองรับการเลื่อนจอ
 
 ---
 

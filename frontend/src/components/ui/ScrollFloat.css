@@ -1,6 +1,8 @@
 .scroll-float {
   margin: 0;
   overflow: hidden;
+  padding-top: 0.12em;
+  padding-bottom: 0.12em;
 }
 
 .scroll-float--open {

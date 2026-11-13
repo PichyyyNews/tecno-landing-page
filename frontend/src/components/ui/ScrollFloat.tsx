@@ -46,10 +46,16 @@ export interface ScrollFloatProps {
   distance?: number;
   stretch?: number;
   smoothing?: number;
+  animateOnMount?: boolean;
 }
 
-const clampToScroll = (position: string) =>
-  typeof position === 'string' && !position.startsWith('clamp(') ? `clamp(${position})` : position;
+const clampToScroll = (position: string) => {
+  if (!position) return position;
+  if (position.includes('+=') || position.includes('-=') || position.startsWith('clamp(')) {
+    return position;
+  }
+  return `clamp(${position})`;
+};
 
 const clamp01 = (value: number) => Math.min(Math.max(value, 0), 1);
 
@@ -94,12 +100,13 @@ export const ScrollFloat: React.FC<ScrollFloatProps> = ({
   fromColor = 'currentColor',
   animationDuration = 1,
   ease = 'back.inOut(2)',
-  scrollStart = 'center bottom+=50%',
-  scrollEnd = 'bottom bottom-=40%',
+  scrollStart = 'top 85%',
+  scrollEnd = 'bottom 60%',
   stagger = 0.03,
   distance = 120,
   stretch = 2.3,
-  smoothing = 0
+  smoothing = 0.5,
+  animateOnMount = false
 }) => {
   const containerRef = useRef<HTMLElement>(null);
   const textRef = useRef<HTMLSpanElement>(null);
@@ -170,6 +177,90 @@ export const ScrollFloat: React.FC<ScrollFloatProps> = ({
     const mm = gsap.matchMedia();
 
     mm.add('(prefers-reduced-motion: no-preference)', () => {
+      if (animateOnMount) {
+        const tl = gsap.timeline({
+          delay: 0.1,
+        });
+        const addIntro = (fromVars: gsap.TweenVars, toVars: gsap.TweenVars) => {
+          gsap.set(targets, { willChange: 'opacity, transform', ...fromVars });
+          return tl.fromTo(
+            targets,
+            { willChange: 'opacity, transform', ...fromVars },
+            { duration: animationDuration, stagger: (index: number) => delays[index] || 0, ...toVars },
+            0
+          );
+        };
+
+        if (effect === 'flip') {
+          addIntro(
+            {
+              rotationX: -90 * sign,
+              transformPerspective: () => size() * 4,
+              transformOrigin: () => `50% 50% ${(-size() * 0.55 * reach).toFixed(2)}`,
+              backfaceVisibility: 'hidden'
+            },
+            { ease, rotationX: 0 }
+          );
+          addIntro({ opacity: 0 }, { ease: (p: number) => smoothstep(0.05, 0.55, timing(p)), opacity: 1 });
+        } else if (effect === 'scatter') {
+          addIntro(
+            {
+              x: at(index => ((random(index, 1) * 2 - 1) * 1.3 - edge(index) * 0.9) * size() * reach),
+              y: at(index => sign * (0.35 + random(index, 2)) * size() * 1.1 * reach),
+              rotation: at(index => (random(index, 3) < 0.5 ? -1 : 1) * (40 + random(index, 4) * 120)),
+              scale: at(index => 0.35 + random(index, 5) * 0.9),
+              transformOrigin: '50% 50%'
+            },
+            { ease, x: 0, y: 0, rotation: 0, scale: 1 }
+          );
+          addIntro({ opacity: 0 }, { ease: (p: number) => smoothstep(0, 0.4, timing(p)), opacity: 1 });
+        } else if (effect === 'blur') {
+          addIntro(
+            {
+              willChange: 'opacity, transform, filter',
+              opacity: 0,
+              y: () => sign * size() * 0.3 * reach,
+              scale: 1.45,
+              filter: () => `blur(${(size() * 0.2).toFixed(2)}px)`,
+              transformOrigin: '50% 50%'
+            },
+            { ease, opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }
+          );
+        } else if (effect === 'wave') {
+          addIntro(
+            {
+              yPercent: 120 * reach * sign,
+              scaleY: stretch,
+              scaleX: squeeze,
+              transformOrigin: sign > 0 ? '50% 100%' : '50% 0%'
+            },
+            { ease: swell, yPercent: 0, scaleY: 1, scaleX: 1 }
+          );
+          addIntro({ rotation: 0 }, { ease: sway, rotation: -16 * sign });
+          addIntro({ opacity: 0 }, { ease: (p: number) => clamp01(timing(p) * 2.5), opacity: 1 });
+        } else {
+          addIntro(
+            {
+              opacity: 0,
+              yPercent: 120 * reach * sign,
+              scaleY: stretch,
+              scaleX: squeeze,
+              transformOrigin: sign > 0 ? '50% 0%' : '50% 100%'
+            },
+            { ease, opacity: 1, yPercent: 0, scaleY: 1, scaleX: 1 }
+          );
+        }
+
+        if (shiftColor) {
+          addIntro(
+            { '--scroll-float-mix': 1 },
+            { ease: (p: number) => smoothstep(0.5, 1, timing(p)), '--scroll-float-mix': 0 }
+          );
+        }
+        return;
+      }
+
+      // ScrollTrigger timeline for scroll-based headlines
       const timeline = gsap.timeline({
         scrollTrigger: {
           trigger: el,
@@ -258,7 +349,14 @@ export const ScrollFloat: React.FC<ScrollFloatProps> = ({
       }
     });
 
-    return () => mm.revert();
+    const refreshTimer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 250);
+
+    return () => {
+      clearTimeout(refreshTimer);
+      mm.revert();
+    };
   }, [
     mounted,
     scrollContainerRef,
@@ -275,7 +373,8 @@ export const ScrollFloat: React.FC<ScrollFloatProps> = ({
     stagger,
     distance,
     stretch,
-    smoothing
+    smoothing,
+    animateOnMount
   ]);
 
   const Component = (as || 'h2') as any;
@@ -289,8 +388,7 @@ export const ScrollFloat: React.FC<ScrollFloatProps> = ({
       <span
         ref={textRef}
         className={`scroll-float-text ${textClassName}`}
-        style={text === null ? shiftStyle : undefined}
-        aria-hidden={text !== null ? true : undefined}
+        aria-hidden={text !== null}
       >
         {splitText ?? children}
       </span>
