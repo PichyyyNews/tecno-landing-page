@@ -94,14 +94,14 @@
   - ผูกสี Brand Accent ประจำแต่ละค่ายเมื่อนำเมาส์ไปชี้ (Hover Color) พร้อมเอฟเฟกต์ Pause on hover ที่ลื่นไหล
 - [x] **Custom Thin Orange Glass Scroller**:
   - ออกแบบ Scrollbar ทั้งหน้าเว็บให้บางกระชับ (`width: 6px`) สไตล์กระจก Frosted Glass ขอบมน Pill shape สีส้ม Sunrise (`rgba(253, 87, 20, 0.4)` พร้อม hover glow `#fd5714`) บนพื้นหลังโปร่งแสง สะอาดตา
-- [x] **ScrollFloat Animation สำหรับ Headlines ทั้งหมด (React Bits + GSAP ScrollTrigger)**:
+- [x] **ScrollFloat Animation สำหรับ Section Headlines (React Bits + GSAP ScrollTrigger)**:
   - ติดตั้งคอมโพเนนต์ `ScrollFloat.tsx` และ `ScrollFloat.css` ทำงานคู่กับ `gsap/ScrollTrigger`
-  - นำไปใช้กับข้อความพาดหัวทั้งหมดในหน้าเว็บ:
-    - **Hero Headline**: "Everything we learned from engineering high-performance compute — yours by default"
+  - ส่วนหัวเรื่องหลัก **Hero Headline** ใช้ Semantic `<h1>` คมชัดเพื่อแสดงผลทันทีบนหน้าแรก (Above-the-fold) ป้องกันปัญหาตัวอักษรจางหายหรือติด Opacity: 0 ก่อนเริ่มเลื่อนหน้าจอ
+  - นำ `ScrollFloat` ไปใช้กับข้อความพาดหัวของ Section ต่างๆ เมื่อผู้ใช้เลื่อนลงมา (Below-the-fold):
     - **Region: Earth Headline**: "Region: Earth"
     - **Hardware Showcase Headline**: "Silicon-optimized compute systems — built for extreme sustained loads"
     - **Silicon Ecosystem Subtitle**: "Engineered & validated for industry-standard silicon architectures"
-  - ข้อความจะค่อยๆ ลอยขึ้น (Float-in) และแยกเป็นคำ/ตัวอักษรอย่างลื่นไหลเมื่อผู้ใช้เลื่อนหน้าจอลงมาถึงจุดนั้นๆ
+  - ข้อความจะค่อยๆ ลอยขึ้น (Float-in) และแยกเป็นคำ/ตัวอักษรอย่างลื่นไหลเมื่อเลื่อนหน้าจอลงมาถึงจุดนั้นๆ
 
 ---
 
