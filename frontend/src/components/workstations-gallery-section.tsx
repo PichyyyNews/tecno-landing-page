@@ -11,39 +11,34 @@ const AccordionGallery = dynamic(
 
 const HARDWARE_SHOWCASE_ITEMS = [
   {
-    image:
-      "https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=1200&q=80",
-    label: "Dual-Socket Neural Workstations",
-    link: "#workstations",
-    alt: "Dual AMD EPYC / Threadripper Pro Workstations with high-speed PCIe gen 5 bus",
+    image: "/department/Gemini_Generated_Image_u644ruu644ruu644.jpg",
+    label: "Technic Computer",
+    link: "#technic-computer",
+    alt: "Technic Computer Department - Hardware engineering, microelectronics and systems",
   },
   {
-    image:
-      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80",
-    label: "8-Way Tensor AI Superclusters",
-    link: "#servers",
-    alt: "Enterprise rackmount AI servers featuring interconnected NVLink GPU backplanes",
+    image: "/department/Gemini_Generated_Image_dot74fdot74fdot7.jpg",
+    label: "Technology Computer",
+    link: "#technology-computer",
+    alt: "Technology Computer Department - Enterprise infrastructure, cloud computing and servers",
   },
   {
-    image:
-      "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=1200&q=80",
-    label: "Sub-Zero Direct Liquid Cooling",
-    link: "#cooling",
-    alt: "Custom direct-to-die microchannel liquid cooling blocks and copper radiators",
+    image: "/department/Gemini_Generated_Image_8g4z0s8g4z0s8g4z.jpg",
+    label: "Game and Animation",
+    link: "#game-animation",
+    alt: "Game and Animation Department - 3D interactive graphics, game development and visual media",
   },
   {
-    image:
-      "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=1200&q=80",
-    label: "4U High-Density Rack Rigs",
-    link: "#rackmount",
-    alt: "4U compute chassis with titanium hot-swap power delivery",
+    image: "/department/Gemini_Generated_Image_rbi22vrbi22vrbi2.jpg",
+    label: "Network and Security",
+    link: "#network-security",
+    alt: "Network and Security Department - Cybersecurity, defense operations and network fabric",
   },
   {
-    image:
-      "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80",
-    label: "400Gbps Low-Latency Network Fabric",
-    link: "#network",
-    alt: "Ultra-low latency RoCEv2 optical fiber cluster interconnects",
+    image: "/department/Gemini_Generated_Image_q4yb2dq4yb2dq4yb.jpg",
+    label: "Information Technology",
+    link: "#information-technology",
+    alt: "Information Technology Department - Modern software engineering, data and IT solutions",
   },
 ];
 
@@ -66,7 +61,7 @@ export function WorkstationsGallerySection() {
       <div className="w-full">
         <AccordionGallery
           items={HARDWARE_SHOWCASE_ITEMS}
-          defaultIndex={2}
+          defaultIndex={1}
           expandRatio={0.52}
           trigger="hover"
           accentColor="#fd5714"

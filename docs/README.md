@@ -113,10 +113,15 @@ frontend/src/
   - ปรับค่า `:root` ใน `globals.css` เป็นโทนสีดำมืดสนิท Obsidian (`hsl(0, 0%, 3.5%)`) เป็นค่าตั้งต้น
   - ใส่ `style={{ colorScheme: "dark" }}` ในแท็ก `<html>` เพื่อล็อก native scrollbar และ UI ให้มืดสนิท
   - ถอดปุ่ม `<ThemeToggle />` และโค้ด Light Theme ออก เพื่อคุมโทนให้ตรงตามสเปก 100%
-- [x] **Hardware Showcase Accordion Gallery (React Bits + GSAP)**:
+- [x] **Hardware / Department Showcase Accordion Gallery (React Bits + GSAP)**:
   - ติดตั้งไลบรารีแอนิเมชัน `gsap` และสร้างคอมโพเนนต์ `AccordionGallery.tsx` พร้อม `AccordionGallery.css`
   - คุมโทนสี Dark Mode (`accentColor="#fd5714"`, `overlayColor="#09090b"`)
-  - นำเข้าภาพ Unsplash จำลองฮาร์ดแวร์ระดับ Data Center / Workstation (Dual Xeon/EPYC, 8-Way Tensor Clusters, Sub-Zero Liquid Cooling, 4U Chassis, 400Gbps Fabric)
+  - อัปเดตภาพและสาขาวิชาประจำภาควิชา (Department Showcase) จาก `public/department/` ทั้ง 5 สาขา:
+    1. **Technic Computer** (`Gemini_Generated_Image_u644ruu644ruu644.jpg`)
+    2. **Technology Computer** (`Gemini_Generated_Image_dot74fdot74fdot7.jpg`)
+    3. **Game and Animation** (`Gemini_Generated_Image_8g4z0s8g4z0s8g4z.jpg`)
+    4. **Network and Security** (`Gemini_Generated_Image_rbi22vrbi22vrbi2.jpg`)
+    5. **Information Technology** (`Gemini_Generated_Image_q4yb2dq4yb2dq4yb.jpg`)
 - [x] **Silicon & Framework Ecosystem Logo Loop (React Bits)**:
   - ติดตั้งคอมโพเนนต์ `LogoLoop.tsx` และ `LogoLoop.css` รองรับ Physics Drag, Edge Fade, Hover Scale, Muted Greyscale
   - รวบรวมแบรนด์ฮาร์ดแวร์และเฟรมเวิร์กระดับองค์กร: NVIDIA, AMD, Intel, Linux, Ubuntu, Red Hat, Docker, Kubernetes, PyTorch, TensorFlow, Go, PostgreSQL
