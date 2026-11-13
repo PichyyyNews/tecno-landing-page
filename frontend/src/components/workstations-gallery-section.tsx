@@ -11,35 +11,35 @@ const AccordionGallery = dynamic(
 
 const HARDWARE_SHOWCASE_ITEMS = [
   {
-    image: "/department/Gemini_Generated_Image_u644ruu644ruu644.jpg",
+    image: "/department/Gemini_Generated_Image_u644ruu644ruu644.webp",
     label: "Technic Computer",
     link: "#technic-computer",
     alt: "Technic Computer Department - Hardware engineering, microelectronics and systems",
     objectPosition: "center 5%",
   },
   {
-    image: "/department/Gemini_Generated_Image_dot74fdot74fdot7.jpg",
+    image: "/department/Gemini_Generated_Image_dot74fdot74fdot7.webp",
     label: "Technology Computer",
     link: "#technology-computer",
     alt: "Technology Computer Department - Enterprise infrastructure, cloud computing and servers",
     objectPosition: "center 8%",
   },
   {
-    image: "/department/Gemini_Generated_Image_7k57ux7k57ux7k57.jpg",
+    image: "/department/Gemini_Generated_Image_7k57ux7k57ux7k57.webp",
     label: "Game and Animation",
     link: "#game-animation",
     alt: "Game and Animation Department - 3D interactive graphics, game development and visual media",
     objectPosition: "center 10%",
   },
   {
-    image: "/department/Gemini_Generated_Image_rbi22vrbi22vrbi2.jpg",
+    image: "/department/Gemini_Generated_Image_rbi22vrbi22vrbi2.webp",
     label: "Network and Security",
     link: "#network-security",
     alt: "Network and Security Department - Cybersecurity, defense operations and network fabric",
     objectPosition: "center 6%",
   },
   {
-    image: "/department/Gemini_Generated_Image_q4yb2dq4yb2dq4yb.jpg",
+    image: "/department/Gemini_Generated_Image_q4yb2dq4yb2dq4yb.webp",
     label: "Information Technology",
     link: "#information-technology",
     alt: "Information Technology Department - Modern software engineering, data and IT solutions",

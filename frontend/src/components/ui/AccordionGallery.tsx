@@ -255,6 +255,10 @@ export const AccordionGallery: React.FC<AccordionGalleryProps> = ({
                   src={item.image}
                   alt={item.alt || item.label || ''}
                   draggable="false"
+                  loading="eager"
+                  decoding="async"
+                  // @ts-expect-error fetchpriority is valid HTML attribute
+                  fetchpriority={isActive ? "high" : "auto"}
                   style={item.objectPosition ? { objectPosition: item.objectPosition } : undefined}
                 />
               </span>

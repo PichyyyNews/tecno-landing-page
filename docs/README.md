@@ -117,11 +117,16 @@ frontend/src/
   - ติดตั้งไลบรารีแอนิเมชัน `gsap` และสร้างคอมโพเนนต์ `AccordionGallery.tsx` พร้อม `AccordionGallery.css`
   - คุมโทนสี Dark Mode (`accentColor="#fd5714"`, `overlayColor="#09090b"`)
   - อัปเดตภาพและสาขาวิชาประจำภาควิชา (Department Showcase) จาก `public/department/` ทั้ง 5 สาขา:
-    1. **Technic Computer** (`Gemini_Generated_Image_u644ruu644ruu644.jpg`, `objectPosition: "center 5%"`)
-    2. **Technology Computer** (`Gemini_Generated_Image_dot74fdot74fdot7.jpg`, `objectPosition: "center 8%"`)
-    3. **Game and Animation** (`Gemini_Generated_Image_7k57ux7k57ux7k57.jpg`, `objectPosition: "center 10%"`)
-    4. **Network and Security** (`Gemini_Generated_Image_rbi22vrbi22vrbi2.jpg`, `objectPosition: "center 6%"`)
-    5. **Information Technology** (`Gemini_Generated_Image_q4yb2dq4yb2dq4yb.jpg`, `objectPosition: "center 5%"`)
+    1. **Technic Computer** (`Gemini_Generated_Image_u644ruu644ruu644.webp`, `objectPosition: "center 5%"`)
+    2. **Technology Computer** (`Gemini_Generated_Image_dot74fdot74fdot7.webp`, `objectPosition: "center 8%"`)
+    3. **Game and Animation** (`Gemini_Generated_Image_7k57ux7k57ux7k57.webp`, `objectPosition: "center 10%"`)
+    4. **Network and Security** (`Gemini_Generated_Image_rbi22vrbi22vrbi2.webp`, `objectPosition: "center 6%"`)
+    5. **Information Technology** (`Gemini_Generated_Image_q4yb2dq4yb2dq4yb.webp`, `objectPosition: "center 5%"`)
+  - **การปรับแต่งประสิทธิภาพและแคช (High-Speed WebP & Cache Optimization)**:
+    - แปลงรูปภาพทั้งหมดเป็นฟอร์แมต **WebP** ด้วย `sharp` ลดขนาดไฟล์ภาพลงกว่า 50% – 57% คงความคมชัดระดับ Retina
+    - กำหนด HTTP Header สำหรับ Browser Caching ถาวร: `Cache-Control: public, max-age=31536000, immutable` ทั้งใน Next.js (`next.config.ts`) และ Caddy Reverse Proxy (`Caddyfile`)
+    - เปิดใช้งานการบีบอัดระดับสูง **Zstandard (`zstd`) และ Gzip** สำหรับ Asset ทั้งหมดในเกตเวย์ Caddy
+    - ใส่แท็ก `loading="eager"`, `decoding="async"` และ `fetchpriority="high"` เพื่อให้เบราว์เซอร์ถอดรหัสภาพนอก Thread หลักแบบไม่บล็อกการเรนเดอร์ โหลดเร็วติดตาทันที
   - **แก้ปัญหาภาพคนถูกตัดส่วนศีรษะ (Portrait Framing & Head Position Fix)**:
     - เพิ่มพร็อพเพอร์ตี้ `objectPosition` ใน `AccordionGalleryItem` และตั้งค่าเริ่มต้นใน CSS เป็น `object-position: center top`
     - กำหนดค่า `objectPosition` แบบละเอียดเจาะจงรายภาพ ทำให้ใบหน้า ศีรษะ และสรีระของนักศึกษาในรูปภาพบุคคลไม่ถูกขอบบนครอบตัด และขยายความสูงการ์ดเป็น `500px` เพื่อสัดส่วนที่สง่างาม
