@@ -117,11 +117,14 @@ frontend/src/
   - ติดตั้งไลบรารีแอนิเมชัน `gsap` และสร้างคอมโพเนนต์ `AccordionGallery.tsx` พร้อม `AccordionGallery.css`
   - คุมโทนสี Dark Mode (`accentColor="#fd5714"`, `overlayColor="#09090b"`)
   - อัปเดตภาพและสาขาวิชาประจำภาควิชา (Department Showcase) จาก `public/department/` ทั้ง 5 สาขา:
-    1. **Technic Computer** (`Gemini_Generated_Image_u644ruu644ruu644.jpg`)
-    2. **Technology Computer** (`Gemini_Generated_Image_dot74fdot74fdot7.jpg`)
-    3. **Game and Animation** (`Gemini_Generated_Image_8g4z0s8g4z0s8g4z.jpg`)
-    4. **Network and Security** (`Gemini_Generated_Image_rbi22vrbi22vrbi2.jpg`)
-    5. **Information Technology** (`Gemini_Generated_Image_q4yb2dq4yb2dq4yb.jpg`)
+    1. **Technic Computer** (`Gemini_Generated_Image_u644ruu644ruu644.jpg`, `objectPosition: "center 5%"`)
+    2. **Technology Computer** (`Gemini_Generated_Image_dot74fdot74fdot7.jpg`, `objectPosition: "center 8%"`)
+    3. **Game and Animation** (`Gemini_Generated_Image_8g4z0s8g4z0s8g4z.jpg`, `objectPosition: "center 15%"`)
+    4. **Network and Security** (`Gemini_Generated_Image_rbi22vrbi22vrbi2.jpg`, `objectPosition: "center 6%"`)
+    5. **Information Technology** (`Gemini_Generated_Image_q4yb2dq4yb2dq4yb.jpg`, `objectPosition: "center 5%"`)
+  - **แก้ปัญหาภาพคนถูกตัดส่วนศีรษะ (Portrait Framing & Head Position Fix)**:
+    - เพิ่มพร็อพเพอร์ตี้ `objectPosition` ใน `AccordionGalleryItem` และตั้งค่าเริ่มต้นใน CSS เป็น `object-position: center top`
+    - กำหนดค่า `objectPosition` แบบละเอียดเจาะจงรายภาพ ทำให้ใบหน้า ศีรษะ และสรีระของนักศึกษาในรูปภาพบุคคลไม่ถูกขอบบนครอบตัด และขยายความสูงการ์ดเป็น `500px` เพื่อสัดส่วนที่สง่างาม
 - [x] **Silicon & Framework Ecosystem Logo Loop (React Bits)**:
   - ติดตั้งคอมโพเนนต์ `LogoLoop.tsx` และ `LogoLoop.css` รองรับ Physics Drag, Edge Fade, Hover Scale, Muted Greyscale
   - รวบรวมแบรนด์ฮาร์ดแวร์และเฟรมเวิร์กระดับองค์กร: NVIDIA, AMD, Intel, Linux, Ubuntu, Red Hat, Docker, Kubernetes, PyTorch, TensorFlow, Go, PostgreSQL

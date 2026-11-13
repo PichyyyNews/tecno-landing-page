@@ -10,6 +10,7 @@ export interface AccordionGalleryItem {
   label?: string;
   link?: string;
   alt?: string;
+  objectPosition?: string;
 }
 
 export interface AccordionGalleryProps {
@@ -250,7 +251,12 @@ export const AccordionGallery: React.FC<AccordionGalleryProps> = ({
                 }}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={item.image} alt={item.alt || item.label || ''} draggable="false" />
+                <img
+                  src={item.image}
+                  alt={item.alt || item.label || ''}
+                  draggable="false"
+                  style={item.objectPosition ? { objectPosition: item.objectPosition } : undefined}
+                />
               </span>
               <span className="ag-panel__overlay" aria-hidden="true" />
             </span>
