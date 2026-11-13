@@ -5,24 +5,24 @@ import { SlArrowRight } from "react-icons/sl";
 
 export function LocationLopburiSection() {
   return (
-    <section className="w-full relative z-10 py-12 sm:py-16">
+    <section className="w-full relative z-10 py-4 sm:py-6">
       {/* 2-Column Responsive Layout */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
         {/* ========================================================= */}
         {/* Left Column: Clean Infrastructure Specs (5/12)           */}
         {/* ========================================================= */}
-        <div className="lg:col-span-5 space-y-6">
+        <div className="lg:col-span-5 space-y-5">
           {/* Eyebrow Label */}
           <div className="text-xs font-mono tracking-wider text-zinc-500 uppercase">
             Regional Node • TH-16
           </div>
 
           {/* Clean Solid Heading & Narrative */}
-          <div className="space-y-3">
+          <div className="space-y-2.5">
             <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-white leading-tight">
               Primary Infrastructure Hub: Lopburi
             </h2>
-            <p className="text-sm text-zinc-400 font-normal leading-relaxed">
+            <p className="text-xs sm:text-sm text-zinc-400 font-normal leading-relaxed">
               Operating at the geographic nexus of Central Thailand. Engineered for direct low-latency dark fiber connectivity to Bangkok and carrier-neutral regional internet exchanges.
             </p>
           </div>
@@ -48,10 +48,10 @@ export function LocationLopburiSection() {
           </div>
 
           {/* Single Clean Action Link */}
-          <div className="pt-1">
+          <div className="pt-0.5">
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 text-xs font-medium text-orange-400 hover:text-orange-300 transition-colors"
+              className="inline-flex items-center gap-1.5 text-xs font-medium text-orange-400 hover:text-orange-300 transition-colors"
             >
               <span>View technical specifications</span>
               <SlArrowRight className="size-2.5" />
@@ -60,17 +60,20 @@ export function LocationLopburiSection() {
         </div>
 
         {/* ========================================================= */}
-        {/* Right Column: Thailand Pixel Map (Borderless & Clean) (7/12) */}
+        {/* Right Column: Thailand Pixel Map with Inward Edge Fade   */}
         {/* ========================================================= */}
         <div className="lg:col-span-7 w-full flex items-center justify-center">
-          <div className="w-full h-[460px] sm:h-[520px] md:h-[560px] relative bg-[#09090b]">
+          <div className="w-full h-[440px] sm:h-[480px] md:h-[520px] relative bg-[#09090b] overflow-hidden">
+            {/* The amCharts Map Iframe (Draggable & Pannable with Mouse) */}
             <iframe
               src="/maps/thailand-pixel-map.html"
               title="Thailand Lopburi Core Pixel Map"
-              className="w-full h-full border-0 bg-[#09090b]"
+              className="w-full h-full border-0 bg-[#09090b] [mask-image:radial-gradient(ellipse_92%_88%_at_50%_50%,black_60%,transparent_100%)]"
               style={{ backgroundColor: "#09090b" }}
               loading="lazy"
             />
+            {/* Inward Soft Edge Fade Overlay (Feathers smoothly into #09090b) */}
+            <div className="absolute inset-0 pointer-events-none [background:radial-gradient(ellipse_92%_88%_at_50%_50%,transparent_60%,#09090b_100%)] z-10" />
           </div>
         </div>
       </div>

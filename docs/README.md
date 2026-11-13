@@ -137,9 +137,10 @@ frontend/src/
     - **การ์ด 4 (ล่างขวา - 8 คอลัมน์)**: *Fast path to AI adoption* พร้อมวิดเจ็ต Terminal จำลองการรัน Background AI Agents แบบ Interactive (`deploy-agent`, `lint-agent`, `test-agent`) และช่องพิมพ์คำสั่งพร้อมปุ่ม `Enter ↵` สีส้ม
 - [x] **Location Section: Thailand Pixel Map เน้นเจาะจง Lopburi Core Hub (Clean UI Design Refactor)**:
   - สร้างคอมโพเนนต์ `frontend/src/components/location-lopburi-section.tsx` วางต่อจากส่วน Bento Grid
-  - ปรับปรุงตามมาตรฐาน `/clean-ui-design` อย่างเข้มงวด:
-    - **ไร้กรอบซ้อน (Borderless & No Nested Cards)**: ถอด `<BorderGlow />`, กรอบการ์ดหนา และแถบ Telemetry ปลอมออกทั้งหมด ให้แผนที่และข้อมูลลอยอยู่บนพื้นผิว Obsidian อย่างสงบและสง่างาม
-    - **แผนที่พิกเซลซูมเจาะจง (Zoomed Map)**: ซูมแผนที่ประเทศไทยเน้นใจกลางภาคกลางและจังหวัดลพบุรี (`homeZoomLevel: 2.1`) ลดพื้นที่ว่างรอบข้าง ทำให้เห็นโครงร่างพิกเซลคมชัด โดดเด่นด้วยเม็ดสีส้ม Sunrise (`#fd5714`) และ Radar Pulse Beacon บนพื้นหลังสีดำสนิท `#09090b` (ไม่มีขอบหรือพื้นหลังสีขาวหลงเหลือ)
+  - ปรับปรุงตามมาตรฐาน `/clean-ui-design` และฟีดแบ็กการใช้งานอย่างสมบูรณ์:
+    - **ขอบมนและเงาเฟดละมุน (Inward Dark Vignette Fade)**: ติดตั้ง radial gradient mask และ vignette overlay ขอบแผนที่ ทำให้เม็ดพิกเซลค่อยๆ ละลายกลืนลงสู่พื้นหลังสีดำ Obsidian (`#09090b`) อย่างนุ่มนวล ไม่มีรอยตัดขอบแข็ง
+    - **รองรับการใช้เมาส์ลากเลื่อนแผนที่ได้อย่างอิสระ (Interactive Mouse Drag & Pan)**: เปิดใช้งาน `panX: "translateX"` และ `panY: "translateY"` พร้อมระบบ Drag Physics เพื่อให้ผู้ใช้สามารถคลิกเมาส์ลากเลื่อนสำรวจแผนที่ประเทศไทยในทุกมุมได้อย่างลื่นไหล
+    - **กระชับระยะห่าง (Compact Padding & Margins)**: ปรับลดระยะ Padding และ Margin ของเซกชันลง (`py-4 sm:py-6`) ให้อยู่ในสัดส่วนที่กะทัดรัดและเชื่อมต่อจาก Bento Grid ได้อย่างลงตัว
     - **จัดระเบียบฝั่งซ้ายให้สะอาด คม สไตล์วิศวกรรม (De-cluttered Left Side)**:
       - ป้ายกำกับเรียบหรู `REGIONAL NODE • TH-16` (ไม่ใช้ไฟกระพริบนีออนรบกวนสายตา)
       - พาดหัวสีขาวคมชัด `Primary Infrastructure Hub: Lopburi` (ไม่ใช้ Gradient text)
