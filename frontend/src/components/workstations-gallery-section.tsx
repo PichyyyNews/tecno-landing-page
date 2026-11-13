@@ -25,11 +25,11 @@ const HARDWARE_SHOWCASE_ITEMS = [
     objectPosition: "center 8%",
   },
   {
-    image: "/department/Gemini_Generated_Image_8g4z0s8g4z0s8g4z.jpg",
+    image: "/department/Gemini_Generated_Image_7k57ux7k57ux7k57.jpg",
     label: "Game and Animation",
     link: "#game-animation",
     alt: "Game and Animation Department - 3D interactive graphics, game development and visual media",
-    objectPosition: "center 15%",
+    objectPosition: "center 10%",
   },
   {
     image: "/department/Gemini_Generated_Image_rbi22vrbi22vrbi2.jpg",

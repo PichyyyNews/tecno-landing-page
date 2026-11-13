@@ -119,7 +119,7 @@ frontend/src/
   - อัปเดตภาพและสาขาวิชาประจำภาควิชา (Department Showcase) จาก `public/department/` ทั้ง 5 สาขา:
     1. **Technic Computer** (`Gemini_Generated_Image_u644ruu644ruu644.jpg`, `objectPosition: "center 5%"`)
     2. **Technology Computer** (`Gemini_Generated_Image_dot74fdot74fdot7.jpg`, `objectPosition: "center 8%"`)
-    3. **Game and Animation** (`Gemini_Generated_Image_8g4z0s8g4z0s8g4z.jpg`, `objectPosition: "center 15%"`)
+    3. **Game and Animation** (`Gemini_Generated_Image_7k57ux7k57ux7k57.jpg`, `objectPosition: "center 10%"`)
     4. **Network and Security** (`Gemini_Generated_Image_rbi22vrbi22vrbi2.jpg`, `objectPosition: "center 6%"`)
     5. **Information Technology** (`Gemini_Generated_Image_q4yb2dq4yb2dq4yb.jpg`, `objectPosition: "center 5%"`)
   - **แก้ปัญหาภาพคนถูกตัดส่วนศีรษะ (Portrait Framing & Head Position Fix)**:
