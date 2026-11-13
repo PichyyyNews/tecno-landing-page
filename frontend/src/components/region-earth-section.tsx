@@ -4,7 +4,6 @@ import React from "react";
 import dynamic from "next/dynamic";
 import { SlGlobe, SlLocationPin, SlSizeFullscreen } from "react-icons/sl";
 import BorderGlow from "@/components/ui/BorderGlow";
-import ScrollFloat from "@/components/ui/ScrollFloat";
 
 const GlobeCdn = dynamic(
   () => import("@/components/ui/cobe-globe-cdn").then((mod) => mod.GlobeCdn),
@@ -21,13 +20,9 @@ export function RegionEarthSection() {
     <section className="w-full pt-8 pb-4 relative overflow-hidden">
       {/* Section Header */}
       <div className="text-center max-w-2xl mx-auto space-y-3 relative z-20">
-        <ScrollFloat
-          as="h2"
-          splitBy="chars"
-          containerClassName="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-foreground"
-        >
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-foreground">
           Region: Earth
-        </ScrollFloat>
+        </h2>
         <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
           One smart network for workloads + security — close to users, close to data.
         </p>

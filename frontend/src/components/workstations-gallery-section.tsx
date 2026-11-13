@@ -2,7 +2,6 @@
 
 import React from "react";
 import dynamic from "next/dynamic";
-import ScrollFloat from "@/components/ui/ScrollFloat";
 
 // Dynamically import AccordionGallery with SSR disabled for optimal GSAP canvas/DOM measurement
 const AccordionGallery = dynamic(
@@ -53,13 +52,9 @@ export function WorkstationsGallerySection() {
     <section className="w-full relative z-10 pt-10 sm:pt-14 pb-8">
       {/* Section Header */}
       <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 px-4">
-        <ScrollFloat
-          as="h2"
-          splitBy="words"
-          containerClassName="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-foreground"
-        >
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-foreground">
           Silicon-optimized compute systems — built for extreme sustained loads
-        </ScrollFloat>
+        </h2>
         <p className="mt-3 text-xs sm:text-sm text-muted-foreground leading-relaxed">
           From silent desk-side neural workstations to multi-rack liquid-cooled
           clusters. Precision-engineered to eliminate memory bottlenecks and
