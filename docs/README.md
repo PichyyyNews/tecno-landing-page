@@ -138,10 +138,10 @@ frontend/src/
 - [x] **Location Section: Thailand Pixel Map เน้นเจาะจง Lopburi Core Hub (Clean UI Design Refactor)**:
   - สร้างคอมโพเนนต์ `frontend/src/components/location-lopburi-section.tsx` วางต่อจากส่วน Bento Grid
   - ปรับปรุงตามมาตรฐาน `/clean-ui-design` และฟีดแบ็กการใช้งานอย่างสมบูรณ์:
-    - **ขอบมนและเงาเฟดละมุนลึก (Deep Cinematic Vignette Fade)**: ติดตั้ง radial gradient mask และ multi-linear gradient overlays (บน ล่าง ซ้าย ขวา) ทำให้เม็ดพิกเซลค่อยๆ ละลายกลืนลงสู่พื้นหลังสีดำ Obsidian (`#09090b`) อย่างนุ่มนวลเป็นธรรมชาติ ไม่มีรอยตัดขอบแข็ง
+    - **ขอบมนและเงาเฟดละมุนลึก (Deep Cinematic Vignette Fade)**: ติดตั้ง radial gradient mask และ multi-linear gradient overlays (บน ล่าง ซ้าย ขวา) ลดความยาวและระยะลึกของเงาลง 15% ตามฟีดแบ็ก ทำให้เม็ดพิกเซลตรงกลางสว่างชัดขึ้น และค่อย ๆ ละลายกลืนลงสู่พื้นหลังสีดำ Obsidian (`#09090b`) อย่างนุ่มนวลเป็นธรรมชาติ
     - **รองรับการใช้เมาส์ลากเลื่อนแผนที่ได้อย่างอิสระ (Interactive Mouse Drag & Pan)**: เปิดใช้งาน `panX: "translateX"` และ `panY: "translateY"` พร้อม Drag Physics เพื่อให้ผู้ใช้สามารถคลิกเมาส์ลากเลื่อนและหมุนลูกกลิ้งซูมสำรวจแผนที่ประเทศไทยในทุกมุมได้อย่างลื่นไหล
     - **ซูมเจาะจงศูนย์กลางลพบุรี (Focused 2.35x Zoom on Lopburi TH-16)**: ปรับตำแหน่งศูนย์กลางที่ละติจูด `14.85` ลองจิจูด `100.65` ซูมลึกระดับ `2.35x` พร้อมวงคลื่นเรดาร์กระพริบสีส้ม Sunrise (`#fd5714`) รอบตัวจังหวัดลพบุรี
-    - **กระชับระยะห่างอย่างลงตัว (Ultra-Compact Padding & Margins)**: ปรับลดระยะ Padding และ Margin ของเซกชันลง (`py-1 sm:py-2 -mt-1 sm:-mt-2` และช่องว่าง `gap-6 lg:gap-8`) ไม่ให้เหลือพื้นที่ว่างเปล่าด้านบนและล่างมากเกินไป เชื่อมต่อจาก Bento Grid ได้อย่างกระชับ
+    - **วางแผนที่แนบชิดเส้นประ Blueprint ไร้ขอบคั่น (Zero Margin & Padding Dash Alignment)**: ปรับโครงสร้างเลย์เอาต์ให้ตัวแผนที่แนบชิดเส้นประแนวนอนด้านบนและด้านล่างทันที (`!mt-0 !mb-0 !pt-0 !pb-0`) และขยายขอบขวาของแคนวาสแผนที่ให้จรดเส้นประแนวตั้งฝั่งขวา (`-mr-3 sm:-mr-4 md:-mr-5`) อย่างสมบูรณ์แบบ ไร้ระยะห่างเปล่าประโยชน์
     - **จัดระเบียบฝั่งซ้ายให้สะอาด คม สไตล์วิศวกรรม (De-cluttered Left Side)**:
       - ป้ายกำกับเรียบหรู `REGIONAL NODE • TH-16` (ไม่ใช้ไฟกระพริบนีออนรบกวนสายตา)
       - พาดหัวสีขาวคมชัด `Primary Infrastructure Hub: Lopburi` (ไม่ใช้ Gradient text)

@@ -64,8 +64,13 @@ export default async function HomePage() {
           {/* 6. Horizontal dashed line between Bento Grid and Location Section */}
           <div className="w-screen relative left-1/2 -translate-x-1/2 border-b border-dashed border-foreground/15 dark:border-white/10" />
 
-          {/* Thailand Lopburi Core Compute Location Section */}
-          <LocationLopburiSection />
+          {/* Thailand Lopburi Core Compute Location Section (Flush against dashed line, zero margin & padding) */}
+          <div className="!mt-0 !mb-0 !pt-0 !pb-0">
+            <LocationLopburiSection />
+          </div>
+
+          {/* 7. Horizontal dashed line below Location Section (Flush against bottom) */}
+          <div className="w-screen relative left-1/2 -translate-x-1/2 border-b border-dashed border-foreground/15 dark:border-white/10 !mt-0" />
         </main>
       </div>
 
