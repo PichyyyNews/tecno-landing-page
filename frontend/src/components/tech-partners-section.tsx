@@ -2,6 +2,7 @@
 
 import React from "react";
 import dynamic from "next/dynamic";
+import ScrollFloat from "@/components/ui/ScrollFloat";
 import {
   SiNvidia,
   SiAmd,
@@ -102,9 +103,13 @@ export function TechPartnersSection() {
     <section className="w-full relative z-10 py-10 sm:py-14">
       {/* Blueprint Minimal Label */}
       <div className="text-center mb-6 sm:mb-8 px-4">
-        <p className="text-[11px] sm:text-xs font-mono tracking-widest uppercase text-muted-foreground/80">
+        <ScrollFloat
+          as="p"
+          splitBy="words"
+          containerClassName="text-[11px] sm:text-xs font-mono tracking-widest uppercase text-muted-foreground/80"
+        >
           Engineered & validated for industry-standard silicon architectures
-        </p>
+        </ScrollFloat>
       </div>
 
       {/* Infinite Logo Loop */}

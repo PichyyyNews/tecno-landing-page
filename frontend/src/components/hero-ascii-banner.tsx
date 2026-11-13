@@ -3,6 +3,7 @@
 import React from "react";
 import dynamic from "next/dynamic";
 import { SlArrowRight } from "react-icons/sl";
+import ScrollFloat from "@/components/ui/ScrollFloat";
 
 const GradientASCII = dynamic(() => import("@/components/GradientASCII"), {
   ssr: false,
@@ -62,9 +63,16 @@ export function HeroASCIIBanner({
         {/* Hero Overlay Content */}
         <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center px-6 sm:px-12 pointer-events-none select-none">
           <div className="max-w-3xl space-y-4 sm:space-y-5">
-            <h1 className="text-2xl sm:text-4xl md:text-[42px] font-bold tracking-tight text-white leading-[1.22] max-w-3xl mx-auto [text-wrap:balance] drop-shadow-md">
+            <ScrollFloat
+              as="h1"
+              splitBy="words"
+              animationDuration={0.8}
+              scrollStart="top top+=100"
+              scrollEnd="bottom center"
+              containerClassName="text-2xl sm:text-4xl md:text-[42px] font-bold tracking-tight text-white leading-[1.22] max-w-3xl mx-auto [text-wrap:balance] drop-shadow-md"
+            >
               {title}
-            </h1>
+            </ScrollFloat>
 
             <p className="max-w-lg sm:max-w-xl mx-auto text-xs sm:text-sm text-zinc-100/90 leading-relaxed drop-shadow [text-wrap:balance]">
               {subtitle}
