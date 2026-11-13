@@ -135,18 +135,16 @@ frontend/src/
     - **การ์ด 2 (บนขวา - 4 คอลัมน์)**: *One network for users, apps, and data* พื้นหลังสีส้มสด Cloudflare Orange (`#fd5714`) โดดเด่น พร้อมไอคอนเน็ตเวิร์กสีขาว และเอฟเฟกต์แสงขอบขาวทองอร่าม (`#ffffff`, `#ffe29a`, `#ffedd5`)
     - **การ์ด 3 (ล่างซ้าย - 4 คอลัมน์)**: *Secure by default* พร้อมไอคอนโล่ป้องกันระบบความปลอดภัยระดับ Zero Trust
     - **การ์ด 4 (ล่างขวา - 8 คอลัมน์)**: *Fast path to AI adoption* พร้อมวิดเจ็ต Terminal จำลองการรัน Background AI Agents แบบ Interactive (`deploy-agent`, `lint-agent`, `test-agent`) และช่องพิมพ์คำสั่งพร้อมปุ่ม `Enter ↵` สีส้ม
-- [x] **Location Section: Thailand Pixel Map เน้นเจาะจง Lopburi Core Hub**:
+- [x] **Location Section: Thailand Pixel Map เน้นเจาะจง Lopburi Core Hub (Clean UI Design Refactor)**:
   - สร้างคอมโพเนนต์ `frontend/src/components/location-lopburi-section.tsx` วางต่อจากส่วน Bento Grid
-  - **คอลัมน์ซ้าย (สเปกระบบและที่ตั้ง)**:
-    - ป้ายสถานะแบบเรียลไทม์: `TH-CENTRAL-01 • Lopburi Core Node` พร้อมไฟกระพริบสีส้ม
-    - พาดหัวชัดเจน: *Primary Compute Node: Lopburi, Thailand* พร้อมข้อความเกริ่นนำเชิงวิศวกรรมโครงสร้างพื้นฐาน
-    - 4 กล่องสเปกทางเทคนิค (Anti-Card-Nesting + Non-breaking units): ค่า Latency ไปกรุงเทพฯ `< 1.2 ms`, ความเร็วแบนด์วิดท์หลัก `400 Gbps`, ระบบไฟฟ้าสำรอง `2N+1 Tier-III`, ความพร้อมใช้งาน `99.999%`
-    - เช็กลิสต์จุดเด่น: เชื่อมตรง CAT, TOT, AIS, True IX, ห้องทดสอบ Liquid-Cooling และคลัสเตอร์ AI Isolated
-    - ปุ่ม Action: แคปซูล `Explore facility specs` สีส้ม และพิกัด GPS `14.7995° N, 100.6534° E`
-  - **คอลัมน์ขวา (Interactive Thailand Pixel Map)**:
-    - นำเข้าแผนที่พิกเซลประเทศไทยจาก `thailandLow-pixel-map.html` มาปรับปรุงประสิทธิภาพให้โหลดแบบ Local Zero-Latency ผ่าน `/amcharts/` ในเครื่อง
-    - ล็อกโฟกัสและไฮไลต์พิกเซลจังหวัดลพบุรี (`TH-16`) ด้วยสีส้ม Sunrise (`#fd5714`) พร้อมวงเรดาร์เรืองแสงกระพริบขยายขนาด (Radar Pulse Beacon) ณ ใจกลางพิกัดลพบุรี
-    - ใส่กรอบเรืองแสง `<BorderGlow />` ขอบมน `borderRadius={24}` ควบคุมโทนดำ Obsidian คมชัดเข้าธีม 100%
+  - ปรับปรุงตามมาตรฐาน `/clean-ui-design` อย่างเข้มงวด:
+    - **ไร้กรอบซ้อน (Borderless & No Nested Cards)**: ถอด `<BorderGlow />`, กรอบการ์ดหนา และแถบ Telemetry ปลอมออกทั้งหมด ให้แผนที่และข้อมูลลอยอยู่บนพื้นผิว Obsidian อย่างสงบและสง่างาม
+    - **แผนที่พิกเซลซูมเจาะจง (Zoomed Map)**: ซูมแผนที่ประเทศไทยเน้นใจกลางภาคกลางและจังหวัดลพบุรี (`homeZoomLevel: 2.1`) ลดพื้นที่ว่างรอบข้าง ทำให้เห็นโครงร่างพิกเซลคมชัด โดดเด่นด้วยเม็ดสีส้ม Sunrise (`#fd5714`) และ Radar Pulse Beacon บนพื้นหลังสีดำสนิท `#09090b` (ไม่มีขอบหรือพื้นหลังสีขาวหลงเหลือ)
+    - **จัดระเบียบฝั่งซ้ายให้สะอาด คม สไตล์วิศวกรรม (De-cluttered Left Side)**:
+      - ป้ายกำกับเรียบหรู `REGIONAL NODE • TH-16` (ไม่ใช้ไฟกระพริบนีออนรบกวนสายตา)
+      - พาดหัวสีขาวคมชัด `Primary Infrastructure Hub: Lopburi` (ไม่ใช้ Gradient text)
+      - ตารางสเปกมินิมอล `divide-y divide-white/10` 4 รายการ (BKK Transit Latency `< 1.2 ms`, Backbone Capacity `400 Gbps`, Power Architecture `2N+1 Modular Grid`, Coordinates `14.7995° N, 100.6534° E`)
+      - ลิงก์คำสั่งเรียบหรู `View technical specifications >` (ไม่มีปุ่มซ้ำซ้อน)
 
 ---
 
