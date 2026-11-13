@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pixel Map - Thailand Lopburi Core</title>
+<!-- Local amCharts 5 libraries -->
+<script src="/amcharts/index.js"></script>
+<script src="/amcharts/map.js"></script>
+<script src="/amcharts/Animated.js"></script>
+<script src="/amcharts/Dark.js"></script>
+<script src="/amcharts/thailandLow.js"></script>
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #09090b !important;
+    color: #fff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  #chartdiv {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: #09090b !important;
+  }
+  /* Lopburi floating HUD badge overlay */
+  .lopburi-hud {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(12, 11, 16, 0.85);
+    border: 1px solid rgba(253, 87, 20, 0.4);
+    border-radius: 12px;
+    padding: 10px 14px;
+    color: #fff;
+    font-size: 11px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), 0 0 20px rgba(253, 87, 20, 0.15);
+    pointer-events: none;
+    z-index: 10;
+  }
+  .lopburi-hud .pulse-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #fd5714;
+    box-shadow: 0 0 10px #fd5714;
+    animation: ping 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+    margin-right: 6px;
+  }
+  @keyframes ping {
+    0% { transform: scale(0.95); opacity: 1; }
+    50% { transform: scale(1.4); opacity: 0.7; box-shadow: 0 0 18px #fd5714; }
+    100% { transform: scale(0.95); opacity: 1; }
+  }
+  /* Hide amcharts logo */
+  a[title*="JavaScript charts"], a[href*="amcharts"] {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+  }
+</style>
+</head>
+<body>
+
+<div id="chartdiv"></div>
+
+<div class="lopburi-hud">
+  <div style="display: flex; items-center; gap: 4px; font-weight: 600; color: #fd5714; letter-spacing: 0.05em; text-transform: uppercase;">
+    <span class="pulse-dot"></span>TH-16 CORE NODE
+  </div>
+  <div style="color: #a1a1aa; font-size: 10px; margin-top: 2px; font-family: monospace;">
+    Lopburi, Central Region • 14.80° N, 100.65° E
+  </div>
+</div>
+
+<script>
+am5.ready(function() {
+  var root = am5.Root.new("chartdiv");
+
+  // Remove watermark if accessible
+  if (root._logo) {
+    root._logo.dispose();
+  }
+
+  root.setThemes([am5themes_Animated.new(root), am5themes_Dark.new(root)]);
+
+  var chart = root.container.children.push(am5map.MapChart.new(root, {
+    projection: am5map.geoMercator(),
+    panX: "none",
+    panY: "none",
+    wheelY: "none",
+    maxPanOut: 0,
+    homeZoomLevel: 1.05,
+    homeGeoPoint: { longitude: 100.6, latitude: 13.6 },
+    homeRotationX: 0,
+    homeRotationY: 0
+  }));
+
+  chart.chartContainer.set("background", am5.Rectangle.new(root, {
+    fill: am5.color(0x09090b),
+    fillOpacity: 1
+  }));
+
+  // Pixel Map Series of Thailand
+  var series = chart.series.push(am5map.PixelMapSeries.new(root, {
+    geoJSON: am5geodata_thailandLow,
+    pixelType: "circle",
+    step: 0.142,
+    pixelSize: 0.76,
+    equalArea: false
+  }));
+
+  // Polygon styling - default subtle zinc dot matrix
+  series.mapPolygons.template.setAll({
+    fill: am5.color(0x52525b),
+    fillOpacity: 0.9,
+    tooltipText: "{name}",
+    templateField: "polygonSettings",
+    interactive: true
+  });
+
+  // Hover state - warm golden amber
+  series.mapPolygons.template.states.create("hover", {
+    fill: am5.color(0xffe29a),
+    fillOpacity: 1
+  });
+
+  // Focus on Lopburi (TH-16) with Sunrise Orange
+  series.data.setAll([
+    {
+      id: "TH-16",
+      polygonSettings: {
+        fill: am5.color(0xfd5714),
+        fillOpacity: 1
+      }
+    }
+  ]);
+
+  // Point Series for Glowing Radar Beacon at Lopburi centroid
+  var pointSeries = chart.series.push(am5map.MapPointSeries.new(root, {}));
+  
+  pointSeries.bullets.push(function() {
+    var container = am5.Container.new(root, {});
+
+    // Radar pulse circle 1
+    var circle2 = container.children.push(am5.Circle.new(root, {
+      radius: 12,
+      fill: am5.color(0xfd5714),
+      fillOpacity: 0.25,
+      stroke: am5.color(0xfd5714),
+      strokeWidth: 1.5,
+      strokeOpacity: 0.8
+    }));
+
+    circle2.animate({
+      key: "radius",
+      to: 28,
+      duration: 2000,
+      loops: Infinity,
+      easing: am5.ease.out(am5.ease.cubic)
+    });
+
+    circle2.animate({
+      key: "opacity",
+      from: 0.8,
+      to: 0,
+      duration: 2000,
+      loops: Infinity,
+      easing: am5.ease.out(am5.ease.cubic)
+    });
+
+    // Solid core dot
+    container.children.push(am5.Circle.new(root, {
+      radius: 5,
+      fill: am5.color(0xffffff),
+      stroke: am5.color(0xfd5714),
+      strokeWidth: 2.5,
+      tooltipText: "Lopburi Core Data Center (Primary Node)"
+    }));
+
+    return am5.Bullet.new(root, {
+      sprite: container
+    });
+  });
+
+  // Add Lopburi coordinates
+  pointSeries.data.setAll([
+    {
+      geometry: { type: "Point", coordinates: [100.6534, 14.7995] },
+      title: "Lopburi Core"
+    }
+  ]);
+
+  series.events.once("datavalidated", function() {
+    chart.goHome(0);
+  });
+
+  chart.appear(1000, 100);
+});
+</script>
+</body>
+</html>

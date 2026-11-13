@@ -6,6 +6,7 @@ import { RegionEarthSection } from "@/components/region-earth-section";
 import { WorkstationsGallerySection } from "@/components/workstations-gallery-section";
 import { TechPartnersSection } from "@/components/tech-partners-section";
 import { UnifiedPlatformBentoSection } from "@/components/unified-platform-bento-section";
+import { LocationLopburiSection } from "@/components/location-lopburi-section";
 import { SlArrowRight } from "react-icons/sl";
 
 // Incremental Static Regeneration (ISR)
@@ -59,6 +60,12 @@ export default async function HomePage() {
 
           {/* Cloudflare-Style Unified Platform Bento Grid */}
           <UnifiedPlatformBentoSection />
+
+          {/* 6. Horizontal dashed line between Bento Grid and Location Section */}
+          <div className="w-screen relative left-1/2 -translate-x-1/2 border-b border-dashed border-foreground/15 dark:border-white/10" />
+
+          {/* Thailand Lopburi Core Compute Location Section */}
+          <LocationLopburiSection />
         </main>
       </div>
 
