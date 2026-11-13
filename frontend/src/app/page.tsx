@@ -5,6 +5,7 @@ import { HeroASCIIBanner } from "@/components/hero-ascii-banner";
 import { RegionEarthSection } from "@/components/region-earth-section";
 import { WorkstationsGallerySection } from "@/components/workstations-gallery-section";
 import { TechPartnersSection } from "@/components/tech-partners-section";
+import { UnifiedPlatformBentoSection } from "@/components/unified-platform-bento-section";
 import { SlArrowRight } from "react-icons/sl";
 
 // Incremental Static Regeneration (ISR)
@@ -52,6 +53,12 @@ export default async function HomePage() {
 
           {/* Silicon & Ecosystem Partners Logo Loop (React Bits) */}
           <TechPartnersSection />
+
+          {/* 5. Horizontal dashed line between Partners Loop and Unified Bento Grid */}
+          <div className="w-screen relative left-1/2 -translate-x-1/2 border-b border-dashed border-foreground/15 dark:border-white/10" />
+
+          {/* Cloudflare-Style Unified Platform Bento Grid */}
+          <UnifiedPlatformBentoSection />
         </main>
       </div>
 

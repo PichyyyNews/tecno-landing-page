@@ -97,6 +97,13 @@
 - [x] **Typography แบบ Clean, Sharp & Solid (ไม่ใช้อนิเมชันข้อความ)**:
   - ยกเลิกและถอดอนิเมชันข้อความ (`ScrollFloat`) ออกทั้งหมดตามทิศทางงานดีไซน์ เพื่อรักษาความเรียบหรู คมชัด สไตล์วิศวกรรมระบบระดับพรีเมียม (Enterprise High-Performance Architecture) แบบ Cloudflare
   - ใช้ Semantic Elements (`<h1>`, `<h2>`, `<p>`) คมชัด นิ่ง น่านับถือ อ่านง่ายทันทีทุกหน้าจอ ไม่ต้องรอเลื่อนหรือรออนิเมชันลอยตัว
+- [x] **Unified Platform Bento Grid Section (Cloudflare Architecture Style)**:
+  - สร้างคอมโพเนนต์ `frontend/src/components/unified-platform-bento-section.tsx` เชื่อมต่อต่อจากเซกชัน Logo Loop
+  - วางผัง 4 การ์ดสมดุลแบบ 8+4 (แถวบน) และ 4+8 (แถวล่าง):
+    - **การ์ด 1 (บนซ้าย - 8 คอลัมน์)**: *Fits into your existing workflows* พร้อมไอคอนคลาวด์สีส้ม และตารางประวัติเวอร์ชันสถานะการ Deploy (`v57013 Building` หมุนสด, `v57012 Deployed`, `v57011 Deployed`)
+    - **การ์ด 2 (บนขวา - 4 คอลัมน์)**: *One network for users, apps, and data* พื้นหลังสีส้มสด Cloudflare Orange (`#fd5714`) โดดเด่น พร้อมไอคอนเน็ตเวิร์กสีขาว
+    - **การ์ด 3 (ล่างซ้าย - 4 คอลัมน์)**: *Secure by default* พร้อมไอคอนโล่ป้องกันระบบความปลอดภัยระดับ Zero Trust
+    - **การ์ด 4 (ล่างขวา - 8 คอลัมน์)**: *Fast path to AI adoption* พร้อมวิดเจ็ต Terminal จำลองการรัน Background AI Agents แบบ Interactive (`deploy-agent`, `lint-agent`, `test-agent`) และช่องพิมพ์คำสั่งพร้อมปุ่ม `Enter ↵` สีส้ม
 
 ---
 
