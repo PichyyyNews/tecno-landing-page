@@ -1,13 +1,13 @@
 # แผนและคู่มือโครงสร้างระบบ: Technology Computer Platform
 
-เอกสารนี้จัดทำขึ้นเพื่อให้ทีมพัฒนาและผู้ตรวจเข้าใจสถาปัตยกรรม เทคโนโลยีที่ใช้งาน งานที่เสร็จแล้ว และใช้เป็นเช็กลิสต์ในการพัฒนาต่อได้ทันที
+เอกสารนี้จัดทำขึ้นเพื่อให้ทีมพัฒนาและผู้ตรวจเข้าใจสถาปัตยกรรม เทคโนโลยีที่ใช้งาน ตรวจสอบงานที่เสร็จแล้ว และใช้เป็นเช็กลิสต์ในการพัฒนาต่อได้ทันที
 
 ---
 
 ## 1. เป้าหมายและโครงสร้างระบบ
 
 ### เป้าหมาย
-พัฒนาแพลตฟอร์มและ Landing Page สำหรับ **Technology Computer** โดยถอดแบบสไตล์ Modern High-Performance Infrastructure ของ Cloudflare (Obsidian Dark Theme, Blueprint Guidelines, 3D WebGL Globe, Inward Vignette ASCII Hero) พร้อมระบบหลังบ้านและฐานข้อมูลที่รองรับงานประมวลผลประสิทธิภาพสูง
+พัฒนาแพลตฟอร์มและ Landing Page สำหรับ **Technology Computer** โดยถอดแบบสไตล์ Modern High-Performance Infrastructure ของ Cloudflare (Obsidian Dark Theme, Blueprint Guidelines, 3D WebGL Globe, Inward Vignette ASCII Hero, Interactive Bento Grid) พร้อมระบบหลังบ้าน Go REST API และฐานข้อมูล PostgreSQL ที่รองรับงานประมวลผลประสิทธิภาพสูง
 
 ### แผนผังการทำงาน (System Architecture Flow)
 ```text
@@ -43,6 +43,9 @@
 | **CSS & Styling** | Tailwind CSS v4.3.3 | คอมไพล์ผ่าน `@tailwindcss/turbopack`, ใช้อะนาโตมีแคปซูล และ Obsidian Dark Tokens |
 | **3D Visualization** | Cobe (`cobe` 2.0.1) | เรนเดอร์ลูกโลก 3 มิติ WebGL พร้อมจุดเชื่อมต่อข้อมูล Arcs ข้ามทวีป, CSS Anchor Positioning, หมุนสมูทความเร็ว `0.0012` |
 | **Hero Animation** | React Bits (`GradientASCII`) | สร้างแคนวาส ASCII ศิลปะแบบ Cloudflare พร้อมชุดสีส้ม Sunrise (`#fd5714`, `#ffe8a6`, `#d8c58d`, `#ffb873`) |
+| **Interactive Edge Glow** | React Bits (`BorderGlow`) | แสงเรืองรองวิ่งตามเคอร์เซอร์เมาส์ (Directional Mesh Gradient Glow) ใช้ใน 3 เสาคุณค่า และ 4 การ์ด Bento Grid |
+| **Interactive Accordion** | React Bits + GSAP 3.14.2 | แกลเลอรีฮาร์ดแวร์เวิร์กสเตชันและเซิร์ฟเวอร์แบบคลี่ขยายแนวนอนเมื่อ Hover |
+| **Infinite Partner Carousel** | React Bits (`LogoLoop`) | ลูปโลโก้พันธมิตรระดับองค์กรแบบไร้รอยต่อ พร้อมแรงเฉื่อยฟิสิกส์ (Physics Drag) และสเกลสีเมื่อชี้ |
 | **Icon Standard** | Simple Line Icons (`react-icons/sl`) | **ใช้ชุดนี้ชุดเดียวทั้งโปรเจกต์** ห้ามผสม Lucide หรืออีโมจิ เพื่อความเรียบหรู คมชัด และสม่ำเสมอ |
 | **Backend Engine** | Go 1.23 (Golang) | บริการ REST API พร้อมระบบ Auto-retry ตรวจการเชื่อมต่อฐานข้อมูล 15 ครั้ง (`lib/pq`) |
 | **Database** | PostgreSQL 16 Alpine | จัดเก็บข้อมูล Catalog สินค้า, เวิร์กสเตชัน และ Log ระบบ พร้อม Healthcheck ตรวจจับสถานะ |
@@ -50,7 +53,33 @@
 
 ---
 
-## 3. งานที่ทำเสร็จแล้ว (Completed Milestones)
+## 3. โครงสร้างไฟล์และคอมโพเนนต์หลัก (Component Structure)
+
+```text
+frontend/src/
+├── app/
+│   ├── layout.tsx                     # Global layout, Pure Dark mode lock, Metadata
+│   ├── page.tsx                       # หน้าหลัก เรียงตามลำดับ Blueprint Sections (ISR 60s)
+│   └── globals.css                    # Tailwind v4, Obsidian tokens, Custom Orange Glass Scrollbar
+├── components/
+│   ├── navbar.tsx                     # Sticky frosted glass navbar พร้อม scroll detection
+│   ├── hero-ascii-banner.tsx          # แบนเนอร์ ASCII Inward Vignette Cloudflare-style
+│   ├── region-earth-section.tsx       # ลูกโลก 3D Cobe WebGL + 3 เสาคุณค่า (BorderGlow)
+│   ├── workstations-gallery-section.tsx # ส่วนแกลเลอรีภาพฮาร์ดแวร์ Data Center
+│   ├── tech-partners-section.tsx      # ส่วน Silicon & Framework Ecosystem Logo Loop
+│   ├── unified-platform-bento-section.tsx # Bento Grid 4 การ์ด (BorderGlow ทุกการ์ด)
+│   └── ui/
+│       ├── BorderGlow.tsx             # คอมโพเนนต์คำนวณ Edge Proximity & Cursor Angle
+│       ├── BorderGlow.css             # Conic & Radial Gradient Masks สำหรับขอบเรืองแสง
+│       ├── AccordionGallery.tsx       # GSAP horizontal accordion gallery
+│       ├── AccordionGallery.css       # Accordion transitions & media query rules
+│       ├── LogoLoop.tsx               # Infinite looping carousel with physics drag
+│       └── LogoLoop.css               # Logo loop styling, grayscale to color transition
+```
+
+---
+
+## 4. งานที่ทำเสร็จแล้ว (Completed Milestones Checklist)
 
 - [x] **โครงสร้างพื้นฐานและ Docker Environment**:
   - สร้างไฟล์ `docker-compose.yml` (Production Standalone) และ `docker-compose.dev.yml` (Dev Hot-Reload)
@@ -100,15 +129,63 @@
 - [x] **Unified Platform Bento Grid Section (Cloudflare Architecture Style)**:
   - สร้างคอมโพเนนต์ `frontend/src/components/unified-platform-bento-section.tsx` เชื่อมต่อต่อจากเซกชัน Logo Loop
   - **อัปเกรดขอบเรืองแสงด้วย `<BorderGlow />` จาก React Bits ครบทั้ง 4 การ์ด**: ผสาน Directional Cursor Edge Glow ตอบสนองต่อการเลื่อนเมาส์รอบขอบการ์ดในโทนสีส้ม Sunrise (`#fd5714`, `#ff8442`, `#ffe29a`) และขอบโค้งมน `borderRadius={20}` ให้เข้าคู่กับ 3 เสาคุณค่าใน Region: Earth อย่างสมบูรณ์แบบ
+  - ปรับแก้ `.border-glow-inner` ให้เป็น `overflow: visible; height: 100%; width: 100%;` เพื่อให้คอนเทนต์ด้านในการ์ดขยายเต็มความสูงโดยไม่มีแถบ scrollbar แฝง
   - วางผัง 4 การ์ดสมดุลแบบ 8+4 (แถวบน) และ 4+8 (แถวล่าง):
     - **การ์ด 1 (บนซ้าย - 8 คอลัมน์)**: *Fits into your existing workflows* พร้อมไอคอนคลาวด์สีส้ม และตารางประวัติเวอร์ชันสถานะการ Deploy (`v57013 Building` หมุนสด, `v57012 Deployed`, `v57011 Deployed`)
-    - **การ์ด 2 (บนขวา - 4 คอลัมน์)**: *One network for users, apps, and data* พื้นหลังสีส้มสด Cloudflare Orange (`#fd5714`) โดดเด่น พร้อมไอคอนเน็ตเวิร์กสีขาว และเอฟเฟกต์แสงขอบขาวทองอร่าม
+    - **การ์ด 2 (บนขวา - 4 คอลัมน์)**: *One network for users, apps, and data* พื้นหลังสีส้มสด Cloudflare Orange (`#fd5714`) โดดเด่น พร้อมไอคอนเน็ตเวิร์กสีขาว และเอฟเฟกต์แสงขอบขาวทองอร่าม (`#ffffff`, `#ffe29a`, `#ffedd5`)
     - **การ์ด 3 (ล่างซ้าย - 4 คอลัมน์)**: *Secure by default* พร้อมไอคอนโล่ป้องกันระบบความปลอดภัยระดับ Zero Trust
     - **การ์ด 4 (ล่างขวา - 8 คอลัมน์)**: *Fast path to AI adoption* พร้อมวิดเจ็ต Terminal จำลองการรัน Background AI Agents แบบ Interactive (`deploy-agent`, `lint-agent`, `test-agent`) และช่องพิมพ์คำสั่งพร้อมปุ่ม `Enter ↵` สีส้ม
 
 ---
 
-## 4. แผนการพัฒนาขั้นตอนถัดไป (Development Roadmap & Checklist)
+## 5. จุดที่ต้องให้ผู้เชี่ยวชาญเช็กเป็นพิเศษ (Special Expert Checkpoints)
+
+1. **WebGL Canvas Hydration & Memory Leak (เซกชัน Region: Earth)**:
+   - ตรวจสอบฟังก์ชันทำลายออบเจกต์ `globe.destroy()` เมื่อถอดคอมโพเนนต์ เพื่อไม่ให้หน่วยความจำ GPU ค้าง
+   - ยืนยันว่าการใช้ `dynamic(() => import(...), { ssr: false })` ยังทำงานถูกต้องเมื่อมีการ Revalidate
+2. **ประสิทธิภาพของ Pointer Tracking ใน `<BorderGlow />`**:
+   - คอมโพเนนต์ใช้ `requestAnimationFrame` และคำนวณพิกัด Trigonometric (`Math.atan2`) เพื่อปรับ CSS Custom Variables
+   - ตรวจสอบว่าในอุปกรณ์หน้าจอสัมผัส (Mobile / Tablet) การเรนเดอร์ไม่กระตุกหรือทำงานหนักเกินความจำเป็น
+3. **การส่งผ่าน Header ของ Caddy Reverse Proxy**:
+   - ตรวจสอบค่า `X-Forwarded-For`, `X-Forwarded-Proto` และการรองรับ WebSocket (`Connection: Upgrade`) หากมีการเปิดใช้งานระบบ Real-time Terminal
+
+---
+
+## 6. ความเสี่ยงและจุดที่ต้องระวัง
+
+- **Turbopack & Tailwind v4 Configuration**: ในไฟล์ `next.config.ts` ต้องคงคอนฟิก `@tailwindcss/turbopack` คู่กับ `output: "standalone"` เสมอ เพื่อไม่ให้ Utility Class หายเวลา Build ลง Docker Image
+- **PowerShell Command Syntax บน Windows**: ในคำสั่ง PowerShell ห้ามเชื่อมคำสั่งด้วย `&&` ให้ใช้เครื่องหมายเซมิโคลอน `;` แทนเสมอ เพื่อป้องกันไวยากรณ์พัง
+- **Container Name Conflict ใน Docker Compose**: หากมีการ Recreate คอนเทนเนอร์แล้วเกิดชื่อซ้ำ ให้ใช้ `docker rm -f <container_name>` เคลียร์คอนเทนเนอร์เดิมออกก่อน
+
+---
+
+## 7. กฎเหล็กที่ต้องรักษาในการเขียนโค้ด (Strict Coding Standards)
+
+1. **การใช้ไอคอน**:
+   - **ต้องใช้ Simple Line Icons จาก `react-icons/sl` เท่านั้น**
+   ```tsx
+   import { SlArrowRight, SlCheck, SlLayers, SlUser, SlCloudUpload, SlShield, SlGlobe } from "react-icons/sl";
+   ```
+   - *ห้ามใช้ Lucide, FontAwesome, Phosphor หรือ Emoji ในโค้ดโดยเด็ดขาด*
+2. **การจัดวางหน่วยตัวเลข (Non-Breaking Units)**:
+   - ตัวเลขทางเทคนิค หน่วยวัด สเปกเครื่อง และราคา ต้องไม่หลุดบรรทัด:
+   ```tsx
+   <span className="whitespace-nowrap tabular-nums font-mono">128&nbsp;GB ECC</span>
+   ```
+3. **การออกแบบและโทนสี**:
+   - อิงสีจาก Tailwind Semantic Tokens (`bg-background`, `text-foreground`, `border-border`, `bg-primary`)
+   - ปุ่มกดใช้ทรงแคปซูลมนกลม (`rounded-full`) และมีปุ่มเด่น (Primary) เพียง 1 ปุ่มต่อ Section
+4. **โหมดการพัฒนาที่รวดเร็ว**:
+   - สำหรับการแก้ไขโค้ด Frontend ทั่วไป สามารถใช้ Dev mode แบบไม่ต้อง build image ใหม่ได้ด้วย:
+   ```powershell
+   docker compose -f docker-compose.dev.yml up -d
+   ```
+5. **การทำ Git Commit**:
+   - Commit ทุกครั้งที่จบแต่ละฟีเจอร์ย่อยด้วย Conventional Commits (`feat:`, `fix:`, `style:`, `refactor:`, `chore:`)
+
+---
+
+## 8. แผนการพัฒนาขั้นตอนถัดไป (Development Roadmap & Checklist)
 
 เรียงตามลำดับที่ควรเริ่มลงมือทำทีละส่วน:
 
@@ -116,7 +193,7 @@
 - [ ] สร้างคอมโพเนนต์ `frontend/src/components/products-catalog-section.tsx`
 - [ ] เชื่อมต่อดึงข้อมูลสินค้าจาก Go API `GET /api/products` ผ่าน Server Component (ISR)
 - [ ] จัดเลย์เอาต์การ์ดแสดงสินค้าแบบ **Anti-Card-Nesting** (ใช้ Surface Luminosity / Inset Box ห้ามนำ `<Card>` ซ้อน `<Card>`)
-- [ ] แสดงค่าสเปกฮาร์ดแวร์ (CPU, GPU, RAM, Storage, Throughput) โดยใช้กฎ **Non-breaking units ("ไม่เอาหน่วยแตก")** อย่างเคร่งครัด เช่น `64&nbsp;GB`, `2&nbsp;TB&nbsp;NVMe`, `4.8&nbsp;GHz`
+- [ ] แสดงค่าสเปกฮาร์ดแวร์ (CPU, GPU, RAM, Storage, Throughput) โดยใช้กฎ **Non-breaking units ("ไม่เอาหน่วยแตก")** เช่น `64&nbsp;GB`, `2&nbsp;TB&nbsp;NVMe`, `4.8&nbsp;GHz`
 - [ ] เพิ่มปุ่มสั่งจองหรือสอบถามสเปกเฉพาะทาง (Custom Config CTA)
 
 ### เฟส B: ตารางเปรียบเทียบสเปกระดับวิศวกรรม (Engineering Benchmark & Specs Table)
@@ -134,38 +211,3 @@
 - [ ] สร้างคอมโพเนนต์ `frontend/src/components/footer.tsx`
 - [ ] ใส่ลิงก์หมวดหมู่ ระบบเอกสาร API Docs, Compliance, Security, System Status
 - [ ] แสดงสัญลักษณ์ Technology Computer Systems และข้อความลิขสิทธิ์
-
----
-
-## 5. กฎเหล็กที่ต้องรักษาในการเขียนโค้ด (Strict Coding Standards)
-
-1. **การใช้ไอคอน**:
-   - **ต้องใช้ Simple Line Icons จาก `react-icons/sl` เท่านั้น**
-   ```tsx
-   import { SlArrowRight, SlCheck, SlLayers, SlUser } from "react-icons/sl";
-   ```
-   - *ห้ามใช้ Lucide, FontAwesome, Phosphor หรือ Emoji ในโค้ดโดยเด็ดขาด*
-2. **การจัดวางหน่วยตัวเลข (Non-Breaking Units)**:
-   - ตัวเลขทางเทคนิค หน่วยวัด สเปกเครื่อง และราคา ต้องไม่หลุดบรรทัด:
-   ```tsx
-   <span className="whitespace-nowrap tabular-nums font-mono">128&nbsp;GB ECC</span>
-   ```
-3. **การออกแบบและโทนสี**:
-   - อิงสีจาก Tailwind Semantic Tokens (`bg-background`, `text-foreground`, `border-border`, `bg-primary`)
-   - ห้ามแปะสี Hex code แปลกปลอมลงในคลาสตรงๆ
-   - ปุ่มกดใช้ทรงแคปซูลมนกลม (`rounded-full`) และมีปุ่มเด่น (Primary) เพียง 1 ปุ่มต่อ Section
-4. **โหมดการพัฒนาที่รวดเร็ว**:
-   - ไม่ต้องเสียเวลาสั่ง `docker compose build` ทุกครั้งที่แก้โค้ดหน้าบ้าน ให้ใช้:
-   ```powershell
-   docker compose -f docker-compose.dev.yml up -d
-   ```
-5. **การทำ Git Commit**:
-   - Commit ทุกครั้งที่จบแต่ละฟีเจอร์ย่อยด้วย Conventional Commits (`feat:`, `fix:`, `style:`, `refactor:`, `chore:`)
-
----
-
-## 6. ความเสี่ยงและจุดที่ต้องระวัง
-
-- **WebGL Canvas Hydration บน Next.js**: คอมโพเนนต์ที่ใช้ `<canvas>` หรือเข้าถึง `window` (เช่น `cobe`) ต้องโหลดผ่าน `dynamic(..., { ssr: false })` เสมอ เพื่อป้องกัน Hydration Mismatch
-- **Turbopack & Tailwind v4 Rule**: ใน `next.config.ts` ต้องคงคอนฟิก `@tailwindcss/turbopack` คู่กับ `output: "standalone"` เสมอ เพื่อไม่ให้ Utility Class หายเวลา Build
-- **Shell Compatibility บน Windows**: ใน PowerShell ห้ามเชื่อมคำสั่งด้วย `&&` ให้ใช้เครื่องหมายเซมิโคลอน `;` แทนเสมอ
